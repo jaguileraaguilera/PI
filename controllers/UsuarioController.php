@@ -50,7 +50,10 @@ class UsuarioController {
 
     $usuario = $this -> service -> inicia_sesion($_SESSION['correo'], $_SESSION['password']);
     if ($usuario) {
-      require_once 'views/navbar.php';
+      $_SESSION['rol'] = $usuario -> getRol();
+      $_SESSION['nombre'] = $usuario -> getNombre();
+      require_once 'views/topbar.php';
+      require_once 'views/navlist.php';
     }
     else {
       header("Location:".base_url);
