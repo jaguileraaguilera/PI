@@ -15,6 +15,6 @@ class EntregaController {
       session_start();  
     }
     require_once 'views/topbar.php';
-    require_once 'views/navlist_entrega.php';
+    require_once 'views/navlist/navlist_entrega.php';
   }
 }

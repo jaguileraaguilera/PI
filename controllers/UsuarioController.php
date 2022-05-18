@@ -14,9 +14,31 @@ class UsuarioController {
     require_once 'views/usuario/iniciar_sesion.php';
   }
 
-  public function dar_alta() {
-    require_once 'views/volver_inicio.php';
-    require_once 'views/usuario/alta_usuario.php';
+  public function login() {
+    session_start();
+    if (!isset($_SESSION['correo']) || (!isset($_SESSION['password']))) {
+      $_SESSION['correo'] = $_POST["correo"];
+      $_SESSION['password'] = $_POST["password"];
+    };
+
+    $usuario = $this -> service -> inicia_sesion($_SESSION['correo'], $_SESSION['password']);
+    if ($usuario) {
+      $_SESSION['rol'] = $usuario -> getRol();
+      $_SESSION['nombre'] = $usuario -> getNombre();
+      require_once 'views/topbar.php';
+      require_once 'views/navlist/navlist.php';
+    }
+    else {
+      header("Location:".base_url);
+    }
+  }
+
+  public function logout() {
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+
+    header("Location:".base_url);
   }
 
   public function opciones_usuario() {
@@ -24,8 +46,10 @@ class UsuarioController {
       session_start();  
     }
     require_once 'views/topbar.php';
-    require_once 'views/navlist_usuario.php';
+    require_once 'views/navlist/navlist_usuario.php';
   }
+
+  // AQUÍ VA EL CORTE
 
   public function datos_usuario() {
     $correo_usuario = $_SESSION['correo'];
@@ -47,33 +71,6 @@ class UsuarioController {
   public function modificar() {
     var_dump($_POST);
     echo "VAMOS POR AQUÍ, LUEGO SEGUIMOS";
-  }
-
-  public function login() {
-    session_start();
-    if (!isset($_SESSION['correo']) || (!isset($_SESSION['password']))) {
-      $_SESSION['correo'] = $_POST["correo"];
-      $_SESSION['password'] = $_POST["password"];
-    };
-
-    $usuario = $this -> service -> inicia_sesion($_SESSION['correo'], $_SESSION['password']);
-    if ($usuario) {
-      $_SESSION['rol'] = $usuario -> getRol();
-      $_SESSION['nombre'] = $usuario -> getNombre();
-      require_once 'views/topbar.php';
-      require_once 'views/navlist.php';
-    }
-    else {
-      header("Location:".base_url);
-    }
-  }
-
-  public function logout() {
-    session_start();
-    $_SESSION = array();
-    session_destroy();
-
-    header("Location:".base_url);
   }
 
   public function registro() {

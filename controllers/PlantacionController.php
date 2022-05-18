@@ -15,6 +15,6 @@ class PlantacionController {
       session_start();  
     }
     require_once 'views/topbar.php';
-    require_once 'views/navlist_plantacion.php';
+    require_once 'views/navlist/navlist_plantacion.php';
   }
 }
