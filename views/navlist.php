@@ -7,7 +7,7 @@
     </div>
   </a>
 
-  <a href="<?=base_url?>/Usuario/socios_opciones" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+  <a href="<?=base_url?>/Usuario/opciones_usuario" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
     <div class="d-flex gap-2 w-100 justify-content-between">
       <div>
         <h6 class="mb-0">Socios</h6>
@@ -15,7 +15,7 @@
     </div>
   </a>
 
-  <a href="<?=base_url?>/Plantaciones/plantaciones_opciones" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+  <a href="<?=base_url?>/Plantacion/opciones_plantacion" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
     <div class="d-flex gap-2 w-100 justify-content-between">
       <div>
         <h6 class="mb-0">Plantaciones</h6>

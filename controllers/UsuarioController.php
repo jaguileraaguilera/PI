@@ -19,6 +19,14 @@ class UsuarioController {
     require_once 'views/usuario/alta_usuario.php';
   }
 
+  public function opciones_usuario() {
+    if (session_status() != 2) { //Si la sesión no está iniciada
+      session_start();  
+    }
+    require_once 'views/topbar.php';
+    require_once 'views/navlist_usuario.php';
+  }
+
   public function datos_usuario() {
     $correo_usuario = $_SESSION['correo'];
     return $this -> service -> datos_usuario($correo_usuario);
