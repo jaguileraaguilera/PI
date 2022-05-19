@@ -47,7 +47,7 @@ class UsuarioController {
   }
 
   public function listar() {
-    $array_objetos = $this -> extraer_todos();
+    $array_objetos = $this -> service -> listar();
     require_once 'views/usuario/ver_todos.php';
     return $array_objetos;
   }
@@ -67,88 +67,95 @@ class UsuarioController {
     }
   }
 
+  public function nuevo() {
+    session_start();
+    if (isset($_SESSION['correo'])) {
+      $objeto = $this -> service -> datos_usuario_correo($_SESSION['correo']);
+      require_once 'views/usuario/alta.php';
+      return $objeto;
+    }
+  }
+
+
   // AQUÍ VA EL CORTE
 
-  public function datos_usuario() {
-    $correo_usuario = $_SESSION['correo'];
-    return $this -> service -> datos_usuario($correo_usuario);
-  }
+  // public function datos_usuario() {
+  //   $correo_usuario = $_SESSION['correo'];
+  //   return $this -> service -> datos_usuario($correo_usuario);
+  // }
 
-  public function extraer_todos() {
-    // require_once 'views/volver_inicio.php';
-    return $this -> service -> listar();
-  }
+  
 
-  public function registro() {
-    // Rescribirla
-    //  si es admin : $_POST["esAdmin"]= "1" sino: -> $_POST["esAdmin"] = "0" lo pasamos a entero
-    $objeto = array(
-      'dni' => $_POST['dni'],
-      'nombre' => $_POST['nombre'],
-      'apellidos' => $_POST['apellidos'],
-      'correo' => $_POST['correo'],
-      'password' => $_POST['password'],
-      'esAdmin' => (int) $_POST['esAdmin']
-    );
-    $this -> service -> guardar($objeto);
+  // public function registro() {
+  //   // Rescribirla
+  //   //  si es admin : $_POST["esAdmin"]= "1" sino: -> $_POST["esAdmin"] = "0" lo pasamos a entero
+  //   $objeto = array(
+  //     'dni' => $_POST['dni'],
+  //     'nombre' => $_POST['nombre'],
+  //     'apellidos' => $_POST['apellidos'],
+  //     'correo' => $_POST['correo'],
+  //     'password' => $_POST['password'],
+  //     'esAdmin' => (int) $_POST['esAdmin']
+  //   );
+  //   $this -> service -> guardar($objeto);
 
-    header("Location:".base_url."/Usuario/login");
-  }
+  //   header("Location:".base_url."/Usuario/login");
+  // }
 
-  public function borrar() {
-    $dni_usuario = $_POST['dni'];
-    $this -> service -> borrar($dni_usuario);
+  // public function borrar() {
+  //   $dni_usuario = $_POST['dni'];
+  //   $this -> service -> borrar($dni_usuario);
 
-    header("Location:".base_url."/Usuario/ver_opciones_borrado");
-  }
+  //   header("Location:".base_url."/Usuario/ver_opciones_borrado");
+  // }
 
-  public function consultar_datos() {
-    if (session_status() != 2) { //Si la sesión no está iniciada
-      session_start();  
-    }
+  // public function consultar_datos() {
+  //   if (session_status() != 2) { //Si la sesión no está iniciada
+  //     session_start();  
+  //   }
     
-    require_once 'views/volver_inicio.php';
-    $objeto = $this -> datos_usuario();
-    require_once 'views/usuario/consultar_datos.php';
-  }
+  //   require_once 'views/volver_inicio.php';
+  //   $objeto = $this -> datos_usuario();
+  //   require_once 'views/usuario/consultar_datos.php';
+  // }
 
-  public function ver_opciones_borrado() {
-    require_once 'views/volver_inicio.php';
-    $objetos = $this -> listar();
-    require_once 'views/Usuario/borrar.php';
-  }
+  // public function ver_opciones_borrado() {
+  //   require_once 'views/volver_inicio.php';
+  //   $objetos = $this -> listar();
+  //   require_once 'views/Usuario/borrar.php';
+  // }
 
-  public function ver_opciones_modificar() {
-    $objetos = $this -> listar();
-    require_once 'views/volver_inicio.php';
-    require_once 'views/usuario/elegir_usuario_campos_modificar.php';
-  }
+  // public function ver_opciones_modificar() {
+  //   $objetos = $this -> listar();
+  //   require_once 'views/volver_inicio.php';
+  //   require_once 'views/usuario/elegir_usuario_campos_modificar.php';
+  // }
 
-  public function ver_formulario_modificar() {
-    $dni = $_POST['dni'];
-    $opciones = array('nombre', 'apellidos', 'correo', 'password');
+  // public function ver_formulario_modificar() {
+  //   $dni = $_POST['dni'];
+  //   $opciones = array('nombre', 'apellidos', 'correo', 'password');
 
-    foreach ($opciones as $opcion) {
-      if (isset($_POST[$opcion])) {
-        $opciones_procesar[] = $_POST[$opcion];
-      }
-    }
+  //   foreach ($opciones as $opcion) {
+  //     if (isset($_POST[$opcion])) {
+  //       $opciones_procesar[] = $_POST[$opcion];
+  //     }
+  //   }
 
-    require_once 'views/volver_inicio.php';
-    $this -> consultar_datos();
-    require_once 'views/usuario/modificar.php';
-  }
+  //   require_once 'views/volver_inicio.php';
+  //   $this -> consultar_datos();
+  //   require_once 'views/usuario/modificar.php';
+  // }
 
-  public function ver_formulario_elegir_datos_modificar() {
-    if (session_status() != 2) { //Si la sesión no está iniciada
-      session_start();  
-    }
+  // public function ver_formulario_elegir_datos_modificar() {
+  //   if (session_status() != 2) { //Si la sesión no está iniciada
+  //     session_start();  
+  //   }
 
-    $objeto = $this -> datos_usuario();
-    $dni = $objeto -> getDni();
+  //   $objeto = $this -> datos_usuario();
+  //   $dni = $objeto -> getDni();
 
-    require_once 'views/volver_inicio.php';
-    $this -> consultar_datos();
-    require_once 'views/usuario/elegir_datos_modificar.php';
-  }
+  //   require_once 'views/volver_inicio.php';
+  //   $this -> consultar_datos();
+  //   require_once 'views/usuario/elegir_datos_modificar.php';
+  // }
 }
