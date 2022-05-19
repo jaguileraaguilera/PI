@@ -3,15 +3,15 @@ namespace models;
 
 class Usuario {
     function __construct(
+        public int    $id_usuario,
+        public int    $rol,
         public string $dni,
         public string $nombre,
         public string $apellidos,
         public string $correo,
         public string $password,
-        public int    $rol,
-        public string $localidad,
         public string $telefono,
-        public int    $id_usuario,
+        public string $localidad,
         public string $direccion
     ){}
 
@@ -197,16 +197,16 @@ class Usuario {
     
     public static function fromArray(array $data) :Usuario {
         return new Usuario (
-            $data['dni'],
-            $data['nombre'],
-            $data['apellidos'],
-            $data['correo'],
-            $data['password'],
-            $data['rol'],
-            $data['localidad'],
-            $data['telefono'],
-            $data['id_usuario'],
-            $data['direccion']
+                $data['id_usuario'],
+                $data['rol'],
+                $data['dni'],
+                $data['nombre'],
+                $data['apellidos'],
+                $data['correo'],
+                $data['password'],
+                $data['telefono'],
+                $data['localidad'],
+                $data['direccion']
         );
     }
 }

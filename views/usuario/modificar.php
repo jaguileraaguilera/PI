@@ -2,6 +2,8 @@
 
 <?php require_once 'views/bc/bc_open.php' ?>
     <?php require_once 'views/bc/bc_inicio.php' ?>
+    <?php require_once 'views/bc/bc_socio.php' ?>
+    <li class="breadcrumb-item active" aria-current="page">Modificar</li>
 <?php require_once 'views/bc/bc_close.php' ?>
 
 <section class="form">
