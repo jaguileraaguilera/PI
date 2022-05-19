@@ -139,10 +139,6 @@ class Entrega {
     }
 
     public static function fromArray(array $data) :Entrega {
-        /**Permite hacer la correspondencia o mapeo de cada array 
-         * de un registro obtenido de la consulta de la base de datos
-         * a un objeto Entrega */
-
         return new Entrega (
             $data['id_entrega'],
             $data['fecha'],

@@ -1,4 +1,4 @@
-<main id="form_ini" class="text-center">
+<main class="form text-center">
     <div class="form-signin w-100 m-auto">
         <form action="<?=base_url?>/Usuario/login" method="POST">
             <img class="mb-4" src="<?=base_url?>/assets/img/logotipo.png" alt="" width="150" height="105">

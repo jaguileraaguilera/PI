@@ -42,11 +42,20 @@ class UsuarioController {
   }
 
   public function opciones_usuario() {
-    if (session_status() != 2) { //Si la sesión no está iniciada
-      session_start();  
-    }
     require_once 'views/topbar.php';
     require_once 'views/navlist/navlist_usuario.php';
+  }
+
+  public function listar() {
+    $usuarios = $this -> extraer_todos();
+    require_once 'views/usuario/ver_todos.php';
+    return $usuarios;
+  }
+
+  public function ver_form_modificar() {
+    $usuario = $this -> service -> datos_usuario($_POST['id_usuario']);
+    require_once 'views/usuario/modificar.php';
+    return $usuario;
   }
 
   // AQUÍ VA EL CORTE
@@ -57,20 +66,8 @@ class UsuarioController {
   }
 
   public function extraer_todos() {
-    require_once 'views/volver_inicio.php';
+    // require_once 'views/volver_inicio.php';
     return $this -> service -> listar();
-  }
-
-  public function listar() {
-    $usuarios = $this -> extraer_todos();
-    require_once 'views/volver_inicio.php';
-    require_once 'views/usuario/listar.php';
-    return $usuarios;
-  }
-
-  public function modificar() {
-    var_dump($_POST);
-    echo "VAMOS POR AQUÍ, LUEGO SEGUIMOS";
   }
 
   public function registro() {

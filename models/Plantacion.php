@@ -82,11 +82,7 @@ class Plantacion {
     }
 
     public static function fromArray(array $data) :Plantacion {
-        /**Permite hacer la correspondencia o mapeo de cada array 
-         * de un registro obtenido de la consulta de la base de datos
-         * a un objeto Plantacion */
-
-        return new Plantacion (
+       return new Plantacion (
             $data['id_plantacion'],
             $data['variedad'],
             $data['anio'],

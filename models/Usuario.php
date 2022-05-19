@@ -3,16 +3,16 @@ namespace models;
 
 class Usuario {
     function __construct(
-        private string $dni,
-        private string $nombre,
-        private string $apellidos,
-        private string $correo,
-        private string $password,
-        private int    $rol,
-        private string $localidad,
-        private string $telefono,
-        private int    $id_usuario,
-        private string $direcion
+        public string $dni,
+        public string $nombre,
+        public string $apellidos,
+        public string $correo,
+        public string $password,
+        public int    $rol,
+        public string $localidad,
+        public string $telefono,
+        public int    $id_usuario,
+        public string $direccion
     ){}
 
     /**
@@ -178,28 +178,24 @@ class Usuario {
     }
 
     /**
-     * Get the value of direcion
-     */
-    public function getDirecion()
-    {
-            return $this->direcion;
-    }
+         * Get the value of direccion
+         */
+        public function getDireccion()
+        {
+                return $this->direccion;
+        }
 
-    /**
-     * Set the value of direcion
-     */
-    public function setDirecion($direcion): self
-    {
-            $this->direcion = $direcion;
+        /**
+         * Set the value of direccion
+         */
+        public function setDireccion($direccion): self
+        {
+                $this->direccion = $direccion;
 
-            return $this;
-    }
-
+                return $this;
+        }
+    
     public static function fromArray(array $data) :Usuario {
-        /**Permite hacer la correspondencia o mapeo de cada array 
-         * de un registro obtenido de la consulta de la base de datos
-         * a un objeto Usuario */
-
         return new Usuario (
             $data['dni'],
             $data['nombre'],

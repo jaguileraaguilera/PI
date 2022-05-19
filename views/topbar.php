@@ -1,8 +1,9 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
-    <a class="navbar-brand" href="<?=base_url?>/Usuario/login">
-        <img src="<?=base_url?>/assets/img/logotipo.png" width="100" height="70" alt="">
-    </a>
+        <a class="navbar-brand" href="<?=base_url?>/Usuario/login">
+            <img src="<?=base_url?>/assets/img/logotipo.png" width="100" height="70" alt="">
+        </a>
+        <?php require_once 'views/comprobar_sesion.php' ?>
         <span class="navbar-text">
             Bienvenido/a <?= $_SESSION['nombre'] ?>
         </span>
