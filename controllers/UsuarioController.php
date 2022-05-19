@@ -21,10 +21,10 @@ class UsuarioController {
       $_SESSION['password'] = $_POST["password"];
     };
 
-    $usuario = $this -> service -> inicia_sesion($_SESSION['correo'], $_SESSION['password']);
-    if ($usuario) {
-      $_SESSION['rol'] = $usuario -> getRol();
-      $_SESSION['nombre'] = $usuario -> getNombre();
+    $objeto = $this -> service -> inicia_sesion($_SESSION['correo'], $_SESSION['password']);
+    if ($objeto) {
+      $_SESSION['rol'] = $objeto -> getRol();
+      $_SESSION['nombre'] = $objeto -> getNombre();
       require_once 'views/topbar.php';
       require_once 'views/navlist/navlist.php';
     }
@@ -47,15 +47,24 @@ class UsuarioController {
   }
 
   public function listar() {
-    $usuarios = $this -> extraer_todos();
+    $array_objetos = $this -> extraer_todos();
     require_once 'views/usuario/ver_todos.php';
-    return $usuarios;
+    return $array_objetos;
   }
 
   public function ver_form_modificar() {
-    $usuario = $this -> service -> datos_usuario($_POST['id_usuario']);
+    $objeto = $this -> service -> datos_usuario($_POST['id_usuario']);
     require_once 'views/usuario/modificar.php';
-    return $usuario;
+    return $objeto;
+  }
+
+  public function mis_datos() {
+    session_start();
+    if (isset($_SESSION['correo'])) {
+      $objeto = $this -> service -> datos_usuario_correo($_SESSION['correo']);
+      require_once 'views/usuario/mis_datos.php';
+      return $objeto;
+    }
   }
 
   // AQUÍ VA EL CORTE
@@ -73,7 +82,7 @@ class UsuarioController {
   public function registro() {
     // Rescribirla
     //  si es admin : $_POST["esAdmin"]= "1" sino: -> $_POST["esAdmin"] = "0" lo pasamos a entero
-    $usuario = array(
+    $objeto = array(
       'dni' => $_POST['dni'],
       'nombre' => $_POST['nombre'],
       'apellidos' => $_POST['apellidos'],
@@ -81,7 +90,7 @@ class UsuarioController {
       'password' => $_POST['password'],
       'esAdmin' => (int) $_POST['esAdmin']
     );
-    $this -> service -> guardar($usuario);
+    $this -> service -> guardar($objeto);
 
     header("Location:".base_url."/Usuario/login");
   }
@@ -99,18 +108,18 @@ class UsuarioController {
     }
     
     require_once 'views/volver_inicio.php';
-    $usuario = $this -> datos_usuario();
+    $objeto = $this -> datos_usuario();
     require_once 'views/usuario/consultar_datos.php';
   }
 
   public function ver_opciones_borrado() {
     require_once 'views/volver_inicio.php';
-    $usuarios = $this -> listar();
+    $objetos = $this -> listar();
     require_once 'views/Usuario/borrar.php';
   }
 
   public function ver_opciones_modificar() {
-    $usuarios = $this -> listar();
+    $objetos = $this -> listar();
     require_once 'views/volver_inicio.php';
     require_once 'views/usuario/elegir_usuario_campos_modificar.php';
   }
@@ -135,8 +144,8 @@ class UsuarioController {
       session_start();  
     }
 
-    $usuario = $this -> datos_usuario();
-    $dni = $usuario -> getDni();
+    $objeto = $this -> datos_usuario();
+    $dni = $objeto -> getDni();
 
     require_once 'views/volver_inicio.php';
     $this -> consultar_datos();

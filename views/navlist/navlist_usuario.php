@@ -12,15 +12,7 @@
                 </div>
             </div>
     </a>
-    <a href="<?=base_url?>/Usuario/modificar_datos" class="list-group-item list-group-item-action d-flex gap-3 py-3"
-    aria-current="true">
-        <div class="d-flex gap-2 w-100 justify-content-between">
-            <div>
-                <h6 class="mb-0">Modificar mis datos personales</h6>
-            </div>
-        </div>
-    </a>
-
+    
     <?php if ($_SESSION['rol'] == 2):?>
     <a href="<?=base_url?>/Usuario/nuevo" class="list-group-item list-group-item-action d-flex gap-3 py-3"
     aria-current="true">

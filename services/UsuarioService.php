@@ -28,4 +28,8 @@ class UsuarioService {
     public function datos_usuario($id_usuario) {
         return $this -> repository -> datos_usuario($id_usuario);
     }
+
+    public function datos_usuario_correo($correo) {
+        return $this -> repository -> datos_usuario_correo($correo);
+    }
 }

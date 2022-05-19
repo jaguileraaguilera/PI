@@ -8,7 +8,7 @@
 
 <section class="form">
     <form action="<?=base_url?>/Usuario/modificar" method="POST">
-        <?php foreach ($usuario as $atributo => $valor) : ?>
+        <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
                 <label for="<?=$atributo?>" class="form-label"><?=$atributo?></label>
                 <?php if ($atributo == 'id_usuario'): ?>
