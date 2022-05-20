@@ -25,4 +25,10 @@ function formatear_cabecera($cabecera) {
     else {
         return quitar_blancos(ucfirst($cabecera));
     }
-} 
+}
+
+function comprobar_sesion() {
+    if (session_status() != 2) {
+        session_start();
+    }
+}

@@ -15,13 +15,13 @@ CREATE TABLE IF NOT EXISTS usuario  (
     correo          varchar(255) not null,
     password        varchar(255) not null,
     rol             tinyint not null,
+    actual          tinyint not null,
 
     CONSTRAINT pk_usuario PRIMARY KEY (id_usuario),
-    CONSTRAINT uq_dni UNIQUE(dni),
     CONSTRAINT uq_correo UNIQUE(correo)  
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol) VALUES (
+INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
     '12345678A',
     'José',
     'Molina Álvarez',
@@ -30,10 +30,11 @@ INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, corr
     '123456789',
     'jose@gmail.com',
     '123456',
-    2
+    2,
+    1
 );
 
-INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol) VALUES (
+INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
     '87654321B',
     'Juan',
     'Pérez López',
@@ -42,6 +43,7 @@ INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, corr
     '987654321',
     'juan@gmail.com',
     '654321',
+    1,
     1
 );
 
@@ -51,6 +53,7 @@ CREATE TABLE IF NOT EXISTS plantacion (
     variedad        varchar(255),
     anio            int,
     id_usuario      int,
+    actual          tinyint,
 
     CONSTRAINT pk_plantacion PRIMARY KEY (id_plantacion),
     CONSTRAINT fk_plantacion_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)

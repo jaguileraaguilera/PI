@@ -76,6 +76,11 @@ class UsuarioController {
     }
   }
 
+  public function borrar() {
+    $this -> service -> borrar($_POST['id_usuario']);
+    header("Location:".base_url."/Usuario/ver_todos");
+  }
+
 
   // AQUÍ VA EL CORTE
 

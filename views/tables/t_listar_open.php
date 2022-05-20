@@ -1,4 +1,4 @@
-<?php require_once 'assets/helpers.php' ?>
+<?php require_once 'helpers.php' ?>
 
 <div class="table-responsive">
   <table class="table table-hover">
@@ -10,6 +10,7 @@
                 <?php require_once 'views/tables/formatear_cabeceras_objeto.php'; ?>
             <?php endif; ?>
             <th scope="row">Modificar</th>
+            <th scope="row">Borrar</th>
         </tr>
     </thead>
         <tbody>
