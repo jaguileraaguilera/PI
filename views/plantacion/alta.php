@@ -3,22 +3,19 @@
 
 <?php require_once 'views/bc/bc_open.php'; ?>
     <?php require_once 'views/bc/bc_inicio.php'; ?>
-    <?php require_once 'views/bc/bc_socio.php'; ?>
+    <?php require_once 'views/bc/bc_plantacion.php'; ?>
     <li class="breadcrumb-item active" aria-current="page">Alta</li>
 <?php require_once 'views/bc/bc_close.php'; ?>
-
 <section class="form">
-    <form action="<?=base_url?>/Usuario/alta" method="POST">
-        <?php foreach ($objeto as $atributo => $valor) : ?>
+    <form action="<?=base_url?>/Plantacion/alta" method="POST">
+        <?php foreach ($array_objetos[0] as $atributo => $valor) : ?>
             <div class="mb-3">
-                <?php if (($atributo != 'actual') && ($atributo != 'id_usuario')): ?>
+                <?php if (($atributo != 'id_plantacion') && ($atributo != 'actual')): ?>
                     <label for="<?=$atributo?>" class="form-label"><?=formatear_cabecera($atributo)?></label>
-                    <?php if ($atributo == 'correo'): ?>
-                        <input type="email" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
-                    <?php elseif ($atributo == 'rol'): ?>
-                        <input type="number" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
-                    <?php else: ?>
+                    <?php if ($atributo == 'variedad'): ?>
                         <input type="text" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>"> 
+                    <?php else: ?>
+                        <input type="number" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
                     <?php endif; ?>
                 <?php elseif ($atributo == 'actual'): ?>
                     <input style="display:none;" type="number" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>" value="1">

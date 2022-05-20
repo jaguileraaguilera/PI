@@ -27,4 +27,27 @@ class PlantacionController {
     return $objeto;
   }
 
+  public function borrar() {
+    $this -> service -> borrar($_POST['id_plantacion']);
+    header("Location:".base_url."/Plantacion/listar");
+  }
+
+  public function mis_plantaciones() {
+    session_start();
+    if (isset($_SESSION['correo'])) {
+      $array_objetos = $this -> service -> datos_plantacion($_SESSION['correo']);
+      require_once 'views/plantacion/mis_plantaciones.php';
+      return $array_objetos;
+    }
+  }
+
+  public function nueva() {
+    session_start();
+    if (isset($_SESSION['correo'])) {
+      $array_objetos = $this -> service -> listar();
+      require_once 'views/plantacion/alta.php';
+      return $array_objetos;
+    }
+  }
+
 }

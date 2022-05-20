@@ -17,11 +17,11 @@ class PlantacionService {
         return $this -> repository -> listar();
     }
 
-    public function borrar(string $id_plantacion): void {
+    public function borrar($id_plantacion): void {
         $this -> repository -> borrar($id_plantacion);
     }
 
-    public function datos_plantacion($id_plantacion) {
-        return $this -> repository -> datos_Plantacion($id_plantacion);
+    public function datos_plantacion($correo) {
+        return $this -> repository -> datos_plantacion($correo);
     }
 }

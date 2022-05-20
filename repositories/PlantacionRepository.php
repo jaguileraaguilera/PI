@@ -22,10 +22,19 @@ class PlantacionRepository {
     }
 
     public function borrar($id_plantacion) {
-        
+        $this -> conexion -> consulta(
+            "UPDATE plantacion set actual = 0 WHERE id_plantacion ='{$id_plantacion}';"
+        );
     }
 
-    public function guardar($Plantacion) {
+    public function datos_plantacion($correo) {
+        $this -> conexion -> consulta(
+            "SELECT plantacion.* FROM plantacion, usuario WHERE plantacion.id_usuario = usuario.id_usuario AND usuario.correo = '{$correo}';"
+        );
+        return $this -> extraer_todos();
+    }
+
+    public function guardar($plantacion) {
         // $this -> conexion -> consulta(
         //     "INSERT INTO Plantacion VALUES(
         //         '{$Plantacion['id_plantacion']}',
@@ -44,13 +53,5 @@ class PlantacionRepository {
         }
 
         return $plantaciones;
-    }
-
-    public function datos_plantacion($id_plantacion) {
-        $this -> conexion -> consulta(
-            "SELECT * FROM plantacion WHERE id_plantacion='{$id_plantacion}';"
-        );
-
-        return $this -> extraer_registro();
     }
 }
