@@ -8,8 +8,8 @@
 <?php require_once 'views/tables/t_listar_open.php'; ?>
     <?php foreach($array_objetos as $objeto): ?>
         <tr>
-            <?php require 'views/tables/tabular_objeto.php'; ?>
             <?php if ($objeto -> getActual() == 1): ?>
+                <?php require 'views/tables/tabular_objeto.php'; ?>
                 <td>
                     <form action="<?=base_url?>/Usuario/ver_form_modificar" method="POST">
                         <input style="display:none;" value="<?=$objeto->getIdUsuario()?>" name="id_usuario" id="id_usuario">

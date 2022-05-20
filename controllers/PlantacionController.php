@@ -14,4 +14,10 @@ class PlantacionController {
     require_once 'views/topbar.php';
     require_once 'views/navlist/navlist_plantacion.php';
   }
+
+  public function listar() {
+    $array_objetos = $this -> service -> listar();
+    require_once 'views/plantacion/ver_todas.php';
+    return $array_objetos;
+  }
 }

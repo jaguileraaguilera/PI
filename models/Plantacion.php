@@ -2,91 +2,66 @@
 namespace models;
 
 class Plantacion {
-    function __construct(
-        private int $id_plantacion,
-        private string $variedad,
-        private int $anio,
-        private int $id_usuario
-    ){}
+        function __construct(
+                public int $id_plantacion,
+                public string $variedad,
+                public int $anio,
+                public int $id_usuario,
+                public int $actual
+        ){}
+        
+        public function getIdPlantacion() {
+                return $this->id_plantacion;
+        }
 
-    /**
-     * Get the value of id_plantacion
-     */
-    public function getIdPlantacion()
-    {
-            return $this->id_plantacion;
-    }
+        public function setIdPlantacion($id_plantacion): self{
+                $this->id_plantacion = $id_plantacion;
+                return $this;
+        }
 
-    /**
-     * Set the value of id_plantacion
-     */
-    public function setIdPlantacion($id_plantacion): self
-    {
-            $this->id_plantacion = $id_plantacion;
+        public function getVariedad() {
+                return $this->variedad;
+        }
 
-            return $this;
-    }
+        public function setVariedad($variedad): self {
+                $this->variedad = $variedad;
+                return $this;
+        }
 
-    /**
-     * Get the value of variedad
-     */
-    public function getVariedad()
-    {
-            return $this->variedad;
-    }
+        public function getAnio() {
+                return $this->anio;
+        }
 
-    /**
-     * Set the value of variedad
-     */
-    public function setVariedad($variedad): self
-    {
-            $this->variedad = $variedad;
+        public function setAnio($anio): self {
+                $this->anio = $anio;
+                return $this;
+        }
 
-            return $this;
-    }
+        public function getIdUsuario() {
+                return $this->id_usuario;
+        }
 
-    /**
-     * Get the value of anio
-     */
-    public function getAnio()
-    {
-            return $this->anio;
-    }
+        public function setIdUsuario($id_usuario): self {
+                $this->id_usuario = $id_usuario;
+                return $this;
+        }
 
-    /**
-     * Set the value of anio
-     */
-    public function setAnio($anio): self
-    {
-            $this->anio = $anio;
+        public function getActual() {
+                return $this->actual;
+        }
 
-            return $this;
-    }
+        public function setActual($actual): self {
+                $this->actual = $actual;
+                return $this;
+        }
 
-    /**
-     * Get the value of id_usuario
-     */
-    public function getIdUsuario()
-    {
-            return $this->id_usuario;
-    }
-
-    /**
-     * Set the value of id_usuario
-     */
-    public function setIdUsuario($id_usuario): self
-    {
-            $this->id_usuario = $id_usuario;
-
-            return $this;
-    }
-
-    public static function fromArray(array $data) :Plantacion {
-       return new Plantacion (
-            $data['id_plantacion'],
-            $data['variedad'],
-            $data['anio'],
-            $data['id_usuario']
-        );
-    }
+        public static function fromArray(array $data) :Plantacion {
+                return new Plantacion (
+                        $data['id_plantacion'],
+                        $data['variedad'],
+                        $data['anio'],
+                        $data['id_usuario'],
+                        $data['actual']
+                        );
+        }
 }

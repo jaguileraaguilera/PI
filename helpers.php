@@ -1,6 +1,6 @@
 <?php
 
-function quitar_blancos($cad) {
+function quitar_guiones($cad) {
     $formateada = '';
 
     for ($i = 0; $i < strlen($cad); $i++) {
@@ -22,8 +22,11 @@ function formatear_cabecera($cabecera) {
     elseif ($cabecera == 'dni') {
         return strtoupper($cabecera);
     }
+    elseif ($cabecera == 'anio') {
+        return 'Año';
+    }
     else {
-        return quitar_blancos(ucfirst($cabecera));
+        return quitar_guiones(ucfirst($cabecera));
     }
 }
 
