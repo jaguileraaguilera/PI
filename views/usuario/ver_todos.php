@@ -9,18 +9,24 @@
     <?php foreach($array_objetos as $objeto): ?>
         <tr>
             <?php require 'views/tables/tabular_objeto.php'; ?>
-            <td>
-                <form action="<?=base_url?>/Usuario/ver_form_modificar" method="POST">
-                    <input style="display:none;" value="<?=$objeto->getIdUsuario()?>" name="id_usuario" id="id_usuario">
-                    <button type="submit" class="btn btn-primary">Modificar</button>
-                </form>
-            </td>
-            <td>
-                <form action="<?=base_url?>/Usuario/ver_form_modificar" method="POST">
-                    <input style="display:none;" value="<?=$objeto->getIdUsuario()?>" name="id_usuario" id="id_usuario">
-                    <button type="submit" class="btn btn-primary">Borrar</button>
-                </form>
-            </td>
+            <?php if ($objeto -> getActual() == 1): ?>
+                <td>
+                    <form action="<?=base_url?>/Usuario/ver_form_modificar" method="POST">
+                        <input style="display:none;" value="<?=$objeto->getIdUsuario()?>" name="id_usuario" id="id_usuario">
+                        <button type="submit" class="btn btn-primary">Modificar</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="<?=base_url?>/Usuario/borrar" method="POST">
+                        <input style="display:none;" value="<?=$objeto->getIdUsuario()?>" name="id_usuario" id="id_usuario">
+                        <?php if ($objeto -> getCorreo() == $_SESSION['correo']): ?>
+                            <button type="submit" class="btn btn-primary" disabled>Borrar</button>
+                        <?php else: ?>
+                            <button type="submit" class="btn btn-primary">Borrar</button>
+                        <?php endif;?>
+                    </form>
+                </td>
+            <?php endif; ?>
         </tr>
     <?php endforeach; ?>
 <?php require_once 'views/tables/t_listar_close.php'; ?>

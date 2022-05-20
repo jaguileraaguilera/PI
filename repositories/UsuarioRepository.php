@@ -28,13 +28,9 @@ class UsuarioRepository {
         return $this -> extraer_todos();
     }
 
-    public function borrar($dni_usuario) {
-        // Primero borramos todas sus citas, para que no chille la BD
+    public function borrar($id_usuario) {
         $this -> conexion -> consulta(
-            "DELETE FROM citas WHERE paciente_dni='{$dni_usuario}';"
-        );
-        $this -> conexion -> consulta(
-            "DELETE FROM usuario WHERE dni='{$dni_usuario}';"
+            "UPDATE usuario set actual = 0 WHERE id_usuario ='{$id_usuario}';"
         );
     }
 

@@ -1,4 +1,4 @@
-<?php require_once 'assets/helpers.php'; ?>
+<?php require_once 'helpers.php'; ?>
 <?php require_once 'views/topbar.php'; ?>
 
 <?php require_once 'views/bc/bc_open.php'; ?>

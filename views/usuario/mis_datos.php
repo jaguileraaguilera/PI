@@ -15,5 +15,11 @@
                 <button type="submit" class="btn btn-primary">Modificar</button>
             </form>
         </td>
+        <td>
+            <form action="<?=base_url?>/Usuario/borrar" method="POST">
+                <input style="display:none;" value="<?=$objeto->getIdUsuario()?>" name="id_usuario" id="id_usuario">
+                <button type="submit" class="btn btn-primary" disabled>Borrar</button>
+            </form>
+        </td>
     </tr>
 <?php require_once 'views/tables/t_listar_close.php'; ?>
