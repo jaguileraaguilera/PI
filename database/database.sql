@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS plantacion (
     id_plantacion   int auto_increment,
     variedad        varchar(255),
     anio            int,
+    zona            tinyint,
     id_usuario      int,
     actual          tinyint,
 
@@ -72,9 +73,10 @@ CREATE TABLE IF NOT EXISTS plantacion (
     CONSTRAINT fk_plantacion_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-INSERT INTO plantacion (variedad, anio, id_usuario, actual) VALUES(
+INSERT INTO plantacion (variedad, anio, zona, id_usuario, actual) VALUES(
     'Placoset',
     '2008',
+    1,
     3,
     1
 );

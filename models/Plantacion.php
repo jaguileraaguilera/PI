@@ -6,6 +6,7 @@ class Plantacion {
                 public int $id_plantacion,
                 public string $variedad,
                 public int $anio,
+                public int $zona,
                 public int $id_usuario,
                 public int $actual
         ){}
@@ -37,6 +38,15 @@ class Plantacion {
                 return $this;
         }
 
+        public function getZona() {
+                return $this->zona;
+        }
+
+        public function setZona($zona): self {
+                $this->zona = $zona;
+                return $this;
+        }
+
         public function getIdUsuario() {
                 return $this->id_usuario;
         }
@@ -60,6 +70,7 @@ class Plantacion {
                         $data['id_plantacion'],
                         $data['variedad'],
                         $data['anio'],
+                        $data['zona'],
                         $data['id_usuario'],
                         $data['actual']
                         );

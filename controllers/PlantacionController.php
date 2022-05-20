@@ -20,4 +20,11 @@ class PlantacionController {
     require_once 'views/plantacion/ver_todas.php';
     return $array_objetos;
   }
+
+  public function ver_form_modificar() {
+    $objeto = $this -> service -> datos_plantacion($_POST['id_plantacion']);
+    require_once 'views/plantacion/modificar.php';
+    return $objeto;
+  }
+
 }
