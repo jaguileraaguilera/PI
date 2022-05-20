@@ -9,7 +9,7 @@
         aria-current="true">
             <div class="d-flex gap-2 w-100 justify-content-between">
                 <div>
-                    <h6 class="mb-0">Ver mis entregas</h6>
+                    <h6 class="mb-0">Ver mis plantaciones</h6>
                 </div>
             </div>
         </a>

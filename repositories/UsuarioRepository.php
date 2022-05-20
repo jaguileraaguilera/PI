@@ -34,30 +34,6 @@ class UsuarioRepository {
         );
     }
 
-    public function guardar($usuario) {
-        $this -> conexion -> consulta(
-            "INSERT INTO usuario VALUES(
-                '{$usuario['dni']}', 
-                '{$usuario['nombre']}', 
-                '{$usuario['apellidos']}',
-                '{$usuario['correo']}',
-                '{$usuario['password']}', 
-                '{$usuario['esAdmin']}');
-            "
-        );
-    }
-
-    public function extraer_todos() {
-        $usuarios = array();
-        $usuariosData = $this -> conexion -> extraer_todos();
-
-        foreach ($usuariosData as $usuarioData) {
-            array_push($usuarios, Usuario::fromArray($usuarioData));
-        }
-
-        return $usuarios;
-    }
-
     public function datos_usuario($id_usuario) {
         $this -> conexion -> consulta(
             "SELECT * FROM usuario WHERE id_usuario='{$id_usuario}';"
@@ -72,5 +48,29 @@ class UsuarioRepository {
         );
 
         return $this -> extraer_registro();
+    }
+
+    public function extraer_todos() {
+        $usuarios = array();
+        $usuariosData = $this -> conexion -> extraer_todos();
+
+        foreach ($usuariosData as $usuarioData) {
+            array_push($usuarios, Usuario::fromArray($usuarioData));
+        }
+
+        return $usuarios;
+    }
+    
+    public function guardar($usuario) {
+        $this -> conexion -> consulta(
+            "INSERT INTO usuario VALUES(
+                '{$usuario['dni']}', 
+                '{$usuario['nombre']}', 
+                '{$usuario['apellidos']}',
+                '{$usuario['correo']}',
+                '{$usuario['password']}', 
+                '{$usuario['esAdmin']}');
+            "
+        );
     }
 }

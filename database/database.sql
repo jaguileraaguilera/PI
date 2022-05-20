@@ -47,6 +47,19 @@ INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, corr
     1
 );
 
+INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
+    '98741236B',
+    'Luis',
+    'Cruz Martín',
+    'C/ Ancha nº 30 3ºB',
+    'Huétor-Tájar',
+    '987412365',
+    'luis@gmail.com',
+    '987654',
+    0,
+    1
+);
+
 DROP TABLE IF EXISTS plantacion;
 CREATE TABLE IF NOT EXISTS plantacion (
     id_plantacion   int auto_increment,
@@ -58,6 +71,13 @@ CREATE TABLE IF NOT EXISTS plantacion (
     CONSTRAINT pk_plantacion PRIMARY KEY (id_plantacion),
     CONSTRAINT fk_plantacion_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT INTO plantacion (variedad, anio, id_usuario, actual) VALUES(
+    'Placoset',
+    '2008',
+    3,
+    1
+);
 
 
 DROP TABLE IF EXISTS entrega;
@@ -73,3 +93,8 @@ CREATE TABLE IF NOT EXISTS entrega (
     CONSTRAINT pk_entrega PRIMARY KEY (id_entrega),
     CONSTRAINT fk_entrega_plantacion FOREIGN KEY (id_plantacion) REFERENCES plantacion(id_plantacion)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- INSERT INTO entrega (fecha, hora, tara, bruto, neto, id_plantacion) VALUES (
+
+
+-- );

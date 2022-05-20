@@ -11,12 +11,10 @@
     <form action="<?=base_url?>/Usuario/alta" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
-                <?php if ($atributo != 'actual') : ?>
+                <?php if (($atributo != 'actual') && ($atributo != 'id_usuario')): ?>
                     <label for="<?=$atributo?>" class="form-label"><?=formatear_cabecera($atributo)?></label>
                     <?php if ($atributo == 'correo'): ?>
                         <input type="email" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
-                    <?php elseif ($atributo == 'password'): ?>
-                        <input type="password" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
                     <?php elseif ($atributo == 'rol'): ?>
                         <input type="number" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
                     <?php else: ?>

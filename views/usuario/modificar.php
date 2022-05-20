@@ -11,12 +11,14 @@
     <form action="<?=base_url?>/Usuario/modificar" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
-                <label for="<?=$atributo?>" class="form-label"><?=formatear_cabecera($atributo)?></label>
-                <?php if ($atributo == 'id_usuario'): ?>
-                    <input type="text" value="<?=$valor?>" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>" aria-describedby="idInfo" disabled>
-                    <div id="idInfo" class="form-text">El identificador está deshabilitado, no se puede modificar</div>
-                <?php else: ?>
-                    <input type="text" value="<?=$valor?>" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
+                <?php if (($atributo != 'actual') && ($atributo != 'rol')): ?>
+                    <label for="<?=$atributo?>" class="form-label"><?=formatear_cabecera($atributo)?></label>
+                    <?php if ($atributo == 'id_usuario'): ?>
+                        <input type="text" value="<?=$valor?>" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>"  aria-describedby="idHelp" disabled>
+                        <div id="idHelp" class="form-text">El identificador está deshabilitado, no se puede modificar</div>
+                    <?php else: ?>
+                        <input type="text" value="<?=$valor?>" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
