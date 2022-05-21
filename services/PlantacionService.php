@@ -24,4 +24,8 @@ class PlantacionService {
     public function datos_plantacion($correo) {
         return $this -> repository -> datos_plantacion($correo);
     }
+
+    public function datos_plantacion_id($id) {
+        return $this -> repository -> datos_plantacion_id($id);
+    }
 }

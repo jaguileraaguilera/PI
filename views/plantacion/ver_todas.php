@@ -1,28 +1,28 @@
 <?php require_once 'views/topbar.php'; ?>
-<?php require_once 'views/bc/bc_open.php'; ?>
-    <?php require_once 'views/bc/bc_inicio.php'; ?>
-    <?php require_once 'views/bc/bc_plantacion.php'; ?>
+<?php require_once 'views/bc/open.php'; ?>
+    <?php require_once 'views/bc/inicio.php'; ?>
+    <?php require_once 'views/bc/plantacion.php'; ?>
     <li class="breadcrumb-item active" aria-current="page">Ver todas</li>
-<?php require_once 'views/bc/bc_close.php'; ?>
+<?php require_once 'views/bc/close.php'; ?>
 
-<?php require_once 'views/tables/t_listar_open.php'; ?>
+<?php require_once 'views/tables/open.php'; ?>
     <?php foreach($array_objetos as $objeto): ?>
         <tr>
             <?php if ($objeto -> getActual() == 1): ?>
                 <?php require 'views/tables/tabular_objeto.php'; ?>
                 <td>
                     <form action="<?=base_url?>/Plantacion/ver_form_modificar" method="POST">
-                        <input style="display:none;" value="<?=$objeto->getIdPlantacion()?>" name="id_plantacion" id="id_plantacion">
-                        <button type="submit" class="btn btn-primary">Modificar</button>
+                        <?php require 'views/input/id_plantacion.php'; ?>
+                        <?php require 'views/btn/modificar.php'; ?>
                     </form>
                 </td>
                 <td>
                     <form action="<?=base_url?>/Plantacion/borrar" method="POST">
-                        <input style="display:none;" value="<?=$objeto->getIdPlantacion()?>" name="id_plantacion" id="id_plantacion">
-                        <button type="submit" class="btn btn-primary">Borrar</button>
+                        <?php require 'views/input/id_plantacion.php'; ?>
+                        <?php require 'views/btn/borrar.php'; ?>
                     </form>
                 </td>
             <?php endif; ?>
         </tr>
     <?php endforeach; ?>
-<?php require_once 'views/tables/t_listar_close.php'; ?>
+<?php require_once 'views/tables/close.php'; ?>

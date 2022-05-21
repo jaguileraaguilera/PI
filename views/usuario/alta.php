@@ -1,30 +1,30 @@
 <?php require_once 'helpers.php'; ?>
 <?php require_once 'views/topbar.php'; ?>
 
-<?php require_once 'views/bc/bc_open.php'; ?>
-    <?php require_once 'views/bc/bc_inicio.php'; ?>
-    <?php require_once 'views/bc/bc_socio.php'; ?>
+<?php require_once 'views/bc/open.php'; ?>
+    <?php require_once 'views/bc/inicio.php'; ?>
+    <?php require_once 'views/bc/socio.php'; ?>
     <li class="breadcrumb-item active" aria-current="page">Alta</li>
-<?php require_once 'views/bc/bc_close.php'; ?>
+<?php require_once 'views/bc/close.php'; ?>
 
 <section class="form">
     <form action="<?=base_url?>/Usuario/alta" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
                 <?php if (($atributo != 'actual') && ($atributo != 'id_usuario')): ?>
-                    <label for="<?=$atributo?>" class="form-label"><?=formatear_cabecera($atributo)?></label>
+                    <?php require 'views/label/formateada.php'; ?>
                     <?php if ($atributo == 'correo'): ?>
-                        <input type="email" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
+                        <?php require 'views/input/email.php'; ?>
                     <?php elseif ($atributo == 'rol'): ?>
-                        <input type="number" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
+                        <?php require 'views/input/number.php'; ?>
                     <?php else: ?>
-                        <input type="text" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>"> 
+                        <?php require 'views/input/text.php'; ?> 
                     <?php endif; ?>
                 <?php elseif ($atributo == 'actual'): ?>
-                    <input style="display:none;" type="number" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>" value="1">
+                    <?php require 'views/input/actual.php'; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
-        <button type="submit" class="btn btn-primary">Dar de alta</button>
+        <?php require_once 'views/btn/alta.php'; ?>
     </form>
 </section>

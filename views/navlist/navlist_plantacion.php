@@ -1,7 +1,7 @@
-<?php require_once 'views/bc/bc_open.php' ?>
-    <?php require_once 'views/bc/bc_inicio.php' ?>
+<?php require_once 'views/bc/open.php' ?>
+    <?php require_once 'views/bc/inicio.php' ?>
     <li class="breadcrumb-item active" aria-current="page">Plantaciones</li>
-<?php require_once 'views/bc/bc_close.php' ?>
+<?php require_once 'views/bc/close.php' ?>
 
 <div class="list-group w-auto">
     <?php if ($_SESSION['rol'] == 0):?>

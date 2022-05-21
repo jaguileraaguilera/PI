@@ -1,27 +1,26 @@
 <?php require_once 'helpers.php'; ?>
 <?php require_once 'views/topbar.php'; ?>
 
-<?php require_once 'views/bc/bc_open.php'; ?>
-    <?php require_once 'views/bc/bc_inicio.php'; ?>
-    <?php require_once 'views/bc/bc_socio.php'; ?>
+<?php require_once 'views/bc/open.php'; ?>
+    <?php require_once 'views/bc/inicio.php'; ?>
+    <?php require_once 'views/bc/socio.php'; ?>
     <li class="breadcrumb-item active" aria-current="page">Modificar</li>
-<?php require_once 'views/bc/bc_close.php'; ?>
+<?php require_once 'views/bc/close.php'; ?>
 
 <section class="form">
     <form action="<?=base_url?>/Usuario/modificar" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
                 <?php if (($atributo != 'actual') && ($atributo != 'rol')): ?>
-                    <label for="<?=$atributo?>" class="form-label"><?=formatear_cabecera($atributo)?></label>
+                    <?php require 'views/label/formateada.php'; ?>
                     <?php if ($atributo == 'id_usuario'): ?>
-                        <input type="text" value="<?=$valor?>" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>"  aria-describedby="idHelp" disabled>
-                        <div id="idHelp" class="form-text">El identificador está deshabilitado, no se puede modificar</div>
+                        <?php require 'views/input/id_disabled.php'; ?>
                     <?php else: ?>
-                        <input type="text" value="<?=$valor?>" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>">
+                        <?php require 'views/input/text.php'; ?>
                     <?php endif; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
-        <button type="submit" class="btn btn-primary">Guardar nuevos valores</button>
+        <?php require 'views/btn/guardar.php'; ?>
     </form>
 </section>

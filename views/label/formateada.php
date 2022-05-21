@@ -1,0 +1,1 @@
+<label for="<?=$atributo?>" class="form-label"><?=formatear_cabecera($atributo)?></label>

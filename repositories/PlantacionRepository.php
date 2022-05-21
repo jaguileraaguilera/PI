@@ -34,6 +34,13 @@ class PlantacionRepository {
         return $this -> extraer_todos();
     }
 
+    public function datos_plantacion_id($id) {
+        $this -> conexion -> consulta(
+            "SELECT * FROM plantacion WHERE id_plantacion = '{$id}';"
+        );
+        return $this -> extraer_registro();
+    }
+
     public function guardar($plantacion) {
         // $this -> conexion -> consulta(
         //     "INSERT INTO Plantacion VALUES(
