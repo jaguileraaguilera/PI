@@ -43,6 +43,11 @@ class EntregaController {
     }
   }
 
+  public function borrar() {
+    $this -> service -> borrar($_POST['id_entrega']);
+    header("Location:".base_url."/Entrega/listar");
+  }
+
   public function alta() {
     echo "POR AQUÍ VA EL CORTE";
     var_dump($_POST);
@@ -52,5 +57,4 @@ class EntregaController {
 
     // EL ACTUAL SE DEFINE A 1 EN EL REPOSITORIO
   }
-
 }

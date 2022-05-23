@@ -34,6 +34,10 @@ class EntregaRepository {
     }
 
     public function borrar($id_entrega) {
+        $this -> conexion -> consulta(
+            "DELETE FROM entrega
+            WHERE id_entrega = '{$id_entrega}';"
+        );
     }
 
     public function guardar($entrega) {
