@@ -1,1 +1,1 @@
-<input style="display:none;" type="number" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>" value="1">
+<input type="number" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>" value="<?=$valor?>" min="0" max="1">

@@ -81,6 +81,13 @@ class UsuarioController {
     header("Location:".base_url."/Usuario/listar");
   }
 
+  public function alta() {
+    echo "POR AQUÍ VA EL CORTE";
+    var_dump($_POST);
+
+    // EL ACTUAL SE DEFINE A 1 EN EL REPOSITORIO
+  }
+
   // AQUÍ VA EL CORTE
 
   // public function datos_usuario() {
