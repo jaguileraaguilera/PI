@@ -18,8 +18,6 @@
                     <?php else: ?>
                         <?php require 'views/input/tara_bruto.php'; ?>
                     <?php endif; ?>
-                <?php elseif ($atributo == 'actual'): ?>
-                    <?php require 'views/input/actual.php'; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

@@ -19,11 +19,7 @@
             <td>
                 <form action="<?=base_url?>/Plantacion/borrar" method="POST">
                     <?php require_once 'views/input/id_plantacion.php'; ?>
-                    <?php if ($_SESSION['rol'] == 0): ?> <!-- Si es socio: -->
-                        <?php require_once 'views/btn/borrar_disabled.php'; ?>
-                    <?php else: ?>
-                        <?php require_once 'views/btn/borrar.php'; ?>
-                    <?php endif; ?>
+                    <?php require_once 'views/btn/borrar_disabled.php'; ?>
                 </form>
             </td>
         </tr>

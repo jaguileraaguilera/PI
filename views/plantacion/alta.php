@@ -17,6 +17,8 @@
                         <?php require 'views/input/text.php'; ?>
                     <?php elseif ($atributo == 'zona'): ?>
                         <?php require 'views/input/zona.php'; ?>
+                    <?php elseif ($atributo == 'anio'): ?>
+                        <?php require 'views/input/anio.php'; ?>
                     <?php else: ?>
                         <?php require 'views/input/number.php'; ?>
                     <?php endif; ?>
