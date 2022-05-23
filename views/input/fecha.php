@@ -1,0 +1,1 @@
+<input style="display:none;" type="text" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>" value="<?=date("Y-m-d")?>">

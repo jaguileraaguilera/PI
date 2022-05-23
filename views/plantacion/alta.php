@@ -9,7 +9,7 @@
 
 <section class="form">
     <form action="<?=base_url?>/Plantacion/alta" method="POST">
-        <?php foreach ($array_objetos[0] as $atributo => $valor) : ?>
+        <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
                 <?php if (($atributo != 'id_plantacion') && ($atributo != 'actual')): ?>
                     <?php require 'views/label/formateada.php' ?>

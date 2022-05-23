@@ -73,6 +73,6 @@ class Plantacion {
                         $data['zona'],
                         $data['id_usuario'],
                         $data['actual']
-                        );
+                );
         }
 }

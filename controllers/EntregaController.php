@@ -33,4 +33,14 @@ class EntregaController {
     }
   }
 
+  public function nueva() {
+    session_start();
+    if (isset($_SESSION['correo'])) {
+      $array_objetos = $this -> service -> listar();
+      $objeto = $array_objetos[0];
+      require_once 'views/entrega/alta.php';
+      return $objeto;
+    }
+  }
+
 }

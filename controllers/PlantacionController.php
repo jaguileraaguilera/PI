@@ -45,8 +45,9 @@ class PlantacionController {
     session_start();
     if (isset($_SESSION['correo'])) {
       $array_objetos = $this -> service -> listar();
+      $objeto = $array_objetos[0];
       require_once 'views/plantacion/alta.php';
-      return $array_objetos;
+      return $objeto;
     }
   }
 
