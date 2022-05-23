@@ -49,11 +49,18 @@ class EntregaRepository {
         );
     }
 
-    public function guardar($entrega) {
-        echo "VAMOS POR AQUÍ";
-        var_dump($_POST);
-        $fecha = date("Y-m-d");
-        $hora = date("h:i:s");
+    public function alta($tara, $bruto, $neto, $fecha, $hora, $id_plantacion) {
+        $this -> conexion -> consulta(
+            "INSERT INTO entrega(fecha, hora, tara, bruto, neto, id_plantacion, actual) VALUES (
+                '{$fecha}',
+                '{$hora}',
+                '{$tara}',
+                '{$bruto}',
+                '{$neto}',
+                '{$id_plantacion}',
+                1
+            );"
+        );
     }
 
     public function extraer_todos() {

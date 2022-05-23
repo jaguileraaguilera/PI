@@ -9,10 +9,6 @@ class EntregaService {
         $this -> repository = new EntregaRepository();
     }
 
-    public function guardar(array $Entrega) : void {
-        $this -> repository -> guardar($Entrega);
-    }
-
     public function listar() {
         return $this -> repository -> listar();
     }
@@ -27,5 +23,9 @@ class EntregaService {
 
     public function datos_entregas_correo($correo) {
         return $this -> repository -> datos_entregas_correo($correo);
+    }
+
+    public function alta($tara, $bruto, $neto, $fecha, $hora, $id_plantacion) {
+        return $this -> repository -> alta($tara, $bruto, $neto, $fecha, $hora, $id_plantacion);
     }
 }

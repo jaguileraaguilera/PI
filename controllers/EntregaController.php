@@ -55,12 +55,24 @@ class EntregaController {
   }
 
   public function alta() {
-    echo "POR AQUÍ VA EL CORTE";
-    var_dump($_POST);
-    $fecha = date("Y-m-d");
-    $hora = date("h:i:s");
-    $neto = $_POST['bruto'] - $_POST['tara'];
+    if (isset($_POST['tara']) && !empty($_POST['tara'])) {
+      $tara = filter_var( $_POST['tara'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    }
 
-    // EL ACTUAL SE DEFINE A 1 EN EL REPOSITORIO
+    if (isset($_POST['bruto']) && !empty($_POST['bruto'])) {
+      $bruto = filter_var( $_POST['bruto'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    }
+
+    if (isset($_POST['id_plantacion']) && !empty($_POST['id_plantacion'])) {
+      $id_plantacion = filter_var($_POST['id_plantacion'], FILTER_SANITIZE_NUMBER_INT);
+    }
+
+    if (!is_null($tara) && !is_null($bruto) && !is_null($id_plantacion)) {
+      $neto = $bruto - $tara;
+      $fecha = date("Y-m-d");
+      $hora = date("H:i:s");
+      $this -> service -> alta($tara, $bruto, $neto, $fecha, $hora, $id_plantacion);
+      header("Location:".base_url."/Entrega/listar");
+    }
   }
 }
