@@ -15,6 +15,10 @@
                     <?php require 'views/label/formateada.php'; ?>
                     <?php if ($atributo == 'id_usuario'): ?>
                         <?php require 'views/input/id_disabled.php'; ?>
+                    <?php elseif ($atributo == 'correo'): ?>
+                        <?php require 'views/input/email.php'; ?>
+                    <?php elseif ($atributo == 'telefono'): ?>
+                        <?php require 'views/input/telefono.php'; ?>
                     <?php else: ?>
                         <?php require 'views/input/text.php'; ?>
                     <?php endif; ?>

@@ -84,6 +84,7 @@ class UsuarioController {
   public function alta() {
     echo "POR AQUÍ VA EL CORTE";
     var_dump($_POST);
+    // rol lo guarda como string con los valores ['0', '1', '2']
 
     // EL ACTUAL SE DEFINE A 1 EN EL REPOSITORIO
   }

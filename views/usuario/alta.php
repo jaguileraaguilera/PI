@@ -17,6 +17,8 @@
                         <?php require 'views/input/email.php'; ?>
                     <?php elseif ($atributo == 'rol'): ?>
                         <?php require 'views/input/rol.php'; ?>
+                    <?php elseif ($atributo == 'telefono'): ?>
+                        <?php require 'views/input/telefono.php'; ?>
                     <?php else: ?>
                         <?php require 'views/input/text.php'; ?> 
                     <?php endif; ?>

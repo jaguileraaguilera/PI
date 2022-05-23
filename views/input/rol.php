@@ -1,5 +1,5 @@
-<?php if ($_GET['action'] == 'ver_form_modificar'): ?>
-    <input type="number" value="<?=$valor?>" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>" min="0" max="2" required>
-<?php else: ?>
-    <input type="number" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>" min="0" max="2" required>
-<?php endif; ?>
+<select class="form-select" id="<?=$atributo?>" name="<?=$atributo?>" required>
+    <option selected value="0">Socio</option>
+    <option value="1">Pesador</option>
+    <option value="2">Administrador</option>
+</select>
