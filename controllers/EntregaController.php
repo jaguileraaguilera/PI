@@ -25,12 +25,12 @@ class EntregaController {
   }
 
   public function mis_entregas() {
-    session_start();
-    if (isset($_SESSION['correo'])) {
-      $array_objetos = $this -> service -> datos_entregas_correo($_SESSION['correo']);
-      require_once 'views/entrega/mis_entregas.php';
-      return $array_objetos;
-    }
+    // session_start();
+    // if (isset($_SESSION['correo'])) {
+    //   $array_objetos = $this -> service -> datos_en($_SESSION['correo']);
+    //   require_once 'views/entrega/mis_entregas.php';
+    //   return $array_objetos;
+    // }
   }
 
   public function nueva() {
@@ -46,6 +46,12 @@ class EntregaController {
   public function borrar() {
     $this -> service -> borrar($_POST['id_entrega']);
     header("Location:".base_url."/Entrega/listar");
+  }
+
+  public function ver_form_modificar() {
+    $objeto = $this -> service -> datos_entrega($_POST['id_entrega']);
+    require_once 'views/entrega/modificar.php';
+    return $objeto;
   }
 
   public function alta() {
