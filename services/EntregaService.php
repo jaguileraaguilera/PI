@@ -24,4 +24,8 @@ class EntregaService {
     public function datos_entrega($id_entrega) {
         return $this -> repository -> datos_entrega($id_entrega);
     }
+
+    public function datos_entregas_correo($correo) {
+        return $this -> repository -> datos_entregas_correo($correo);
+    }
 }

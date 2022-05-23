@@ -31,6 +31,17 @@ class EntregaRepository {
         return $this -> extraer_registro();
     }
 
+    public function datos_entregas_correo($correo) {
+        $this -> conexion -> consulta(
+            "SELECT entrega.* 
+            FROM plantacion, usuario, entrega 
+            WHERE plantacion.id_usuario = usuario.id_usuario
+            AND plantacion.id_plantacion = entrega.id_entrega 
+            AND usuario.correo = '{$correo}';"
+        );
+        return $this -> extraer_todos();
+    }
+
     public function borrar($id_entrega) {
         $this -> conexion -> consulta(
             "DELETE FROM entrega

@@ -29,7 +29,10 @@ class PlantacionRepository {
 
     public function datos_plantacion($correo) {
         $this -> conexion -> consulta(
-            "SELECT plantacion.* FROM plantacion, usuario WHERE plantacion.id_usuario = usuario.id_usuario AND usuario.correo = '{$correo}';"
+            "SELECT plantacion.* 
+            FROM plantacion, usuario 
+            WHERE plantacion.id_usuario = usuario.id_usuario 
+            AND usuario.correo = '{$correo}';"
         );
         return $this -> extraer_todos();
     }

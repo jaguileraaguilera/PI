@@ -25,12 +25,12 @@ class EntregaController {
   }
 
   public function mis_entregas() {
-    // session_start();
-    // if (isset($_SESSION['correo'])) {
-    //   $array_objetos = $this -> service -> datos_en($_SESSION['correo']);
-    //   require_once 'views/entrega/mis_entregas.php';
-    //   return $array_objetos;
-    // }
+    session_start();
+    if (isset($_SESSION['correo'])) {
+      $array_objetos = $this -> service -> datos_entregas_correo($_SESSION['correo']);
+      require_once 'views/entrega/mis_entregas.php';
+      return $array_objetos;
+    }
   }
 
   public function nueva() {
