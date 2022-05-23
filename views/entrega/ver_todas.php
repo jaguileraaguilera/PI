@@ -10,13 +10,13 @@
         <tr>
             <?php require 'views/tables/tabular_objeto.php'; ?>
             <td>
-                <form action="<?=base_url?>/Entrega/ver_form_modificar" method="POST">
+                <form action="<?=htmlspecialchars(base_url."/Entrega/ver_form_modificar")?>" method="POST">
                     <?php require 'views/input/id_entrega.php'; ?>
                     <?php require 'views/btn/modificar.php'; ?>
                 </form>
             </td>
             <td>
-                <form action="<?=base_url?>/Entrega/borrar" method="POST">
+                <form action="<?=htmlspecialchars(base_url."/Entrega/borrar")?>" method="POST">
                     <?php require 'views/input/id_entrega.php'; ?>
                     <?php require 'views/btn/borrar.php'; ?>
                 </form>

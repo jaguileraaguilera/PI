@@ -8,7 +8,7 @@
 <?php require_once 'views/bc/close.php'; ?>
 
 <section class="form">
-    <form action="<?=base_url?>/Entrega/alta" method="POST">
+    <form action="<?=htmlspecialchars(base_url."/Entrega/alta")?>" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
                 <?php if (in_array($atributo, ['bruto', 'tara', 'id_plantacion'])): ?>

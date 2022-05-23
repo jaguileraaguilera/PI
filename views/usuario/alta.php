@@ -8,7 +8,7 @@
 <?php require_once 'views/bc/close.php'; ?>
 
 <section class="form">
-    <form action="<?=base_url?>/Usuario/alta" method="POST">
+    <form action="<?=htmlspecialchars(base_url."/Usuario/alta")?>" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
                 <?php if (($atributo != 'actual') && ($atributo != 'id_usuario')): ?>

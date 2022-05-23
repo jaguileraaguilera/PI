@@ -11,13 +11,13 @@
         <tr>
             <?php require_once 'views/tables/tabular_objeto.php'; ?>
             <td>
-                <form action="<?=base_url?>/Plantacion/ver_form_modificar" method="POST">
+                <form action="<?=htmlspecialchars(base_url."/ver_form_modificar")?>" method="POST">
                     <?php require_once 'views/input/id_plantacion.php'; ?>
                     <?php require_once 'views/btn/modificar.php'; ?>
                 </form>
             </td>
             <td>
-                <form action="<?=base_url?>/Plantacion/borrar" method="POST">
+                <form action="<?=htmlspecialchars(base_url."/Plantacion/borrar")?>" method="POST">
                     <?php require_once 'views/input/id_plantacion.php'; ?>
                     <?php require_once 'views/btn/borrar_disabled.php'; ?>
                 </form>

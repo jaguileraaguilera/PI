@@ -11,13 +11,13 @@
             <?php if ($objeto -> getActual() == 1): ?>
                 <?php require 'views/tables/tabular_objeto.php'; ?>
                 <td>
-                    <form action="<?=base_url?>/Plantacion/ver_form_modificar" method="POST">
+                    <form action="<?=htmlspecialchars(base_url."/Plantacion/ver_form_modificar")?>" method="POST">
                         <?php require 'views/input/id_plantacion.php'; ?>
                         <?php require 'views/btn/modificar.php'; ?>
                     </form>
                 </td>
                 <td>
-                    <form action="<?=base_url?>/Plantacion/borrar" method="POST">
+                    <form action="<?=htmlspecialchars(base_url."/Plantacion/borrar")?>" method="POST">
                         <?php require 'views/input/id_plantacion.php'; ?>
                         <?php require 'views/btn/borrar.php'; ?>
                     </form>

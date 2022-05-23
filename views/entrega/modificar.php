@@ -8,7 +8,7 @@
 <?php require_once 'views/bc/close.php'; ?>
 
 <section class="form">
-    <form action="<?=base_url?>/Entrega/modificar" method="POST">
+    <form action="<?=htmlspecialchars(base_url."/Entrega/modificar")?>" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
                 <?php if (($atributo != 'id_entrega') && ($atributo != 'neto') && ($atributo != 'actual')): ?>

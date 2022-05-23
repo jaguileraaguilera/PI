@@ -106,3 +106,13 @@ INSERT INTO entrega (fecha, hora, tara, bruto, neto, id_plantacion, actual) VALU
     1,
     1
 );
+
+INSERT INTO entrega (fecha, hora, tara, bruto, neto, id_plantacion, actual) VALUES (
+    '2022-03-18',
+    '11:23:34',
+    30.5,
+    120.5,
+    90,
+    1,
+    1
+);

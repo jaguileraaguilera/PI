@@ -36,7 +36,7 @@ class EntregaRepository {
             "SELECT entrega.* 
             FROM plantacion, usuario, entrega 
             WHERE plantacion.id_usuario = usuario.id_usuario
-            AND plantacion.id_plantacion = entrega.id_entrega 
+            AND plantacion.id_plantacion = entrega.id_plantacion 
             AND usuario.correo = '{$correo}';"
         );
         return $this -> extraer_todos();
@@ -50,13 +50,10 @@ class EntregaRepository {
     }
 
     public function guardar($entrega) {
-        // $this -> conexion -> consulta(
-        //     "INSERT INTO Entrega VALUES(
-        //         '{$entrega['nombre']}', 
-            
-        //     );
-        //     "
-        // );
+        echo "VAMOS POR AQUÍ";
+        var_dump($_POST);
+        $fecha = date("Y-m-d");
+        $hora = date("h:i:s");
     }
 
     public function extraer_todos() {
