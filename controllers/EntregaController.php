@@ -43,4 +43,14 @@ class EntregaController {
     }
   }
 
+  public function alta() {
+    echo "POR AQUÍ VA EL CORTE";
+    var_dump($_POST);
+    $fecha = date("Y-m-d");
+    $hora = date("h:i:s");
+    $neto = $_POST['bruto'] - $_POST['tara'];
+
+    // EL ACTUAL SE DEFINE A 1 EN EL REPOSITORIO
+  }
+
 }

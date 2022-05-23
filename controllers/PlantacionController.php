@@ -51,4 +51,11 @@ class PlantacionController {
     }
   }
 
+  public function alta() {
+    echo "POR AQUÍ VA EL CORTE";
+    var_dump($_POST);
+
+    // EL ACTUAL SE DEFINE A 1 EN EL REPOSITORIO
+  }
+
 }

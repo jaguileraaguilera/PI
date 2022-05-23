@@ -11,17 +11,15 @@
     <form action="<?=base_url?>/Entrega/alta" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
-                <?php if (!in_array($atributo, ['id_entrega', 'actual', 'fecha', 'hora'])): ?>
+                <?php if (in_array($atributo, ['bruto', 'tara', 'id_plantacion'])): ?>
                     <?php require 'views/label/formateada.php'; ?>
-                    <?php require 'views/input/number.php'; ?>
-                <?php elseif ($atributo == 'id_entrega'): ?>
-                    <?php require 'views/input/id_entrega.php'; ?>
+                    <?php if ($atributo == 'id_plantacion'): ?>
+                        <?php require 'views/input/number.php'; ?>
+                    <?php else: ?>
+                        <?php require 'views/input/tara_bruto.php'; ?>
+                    <?php endif; ?>
                 <?php elseif ($atributo == 'actual'): ?>
                     <?php require 'views/input/actual.php'; ?>
-                <?php elseif ($atributo == 'fecha'): ?>
-                    <?php require 'views/input/fecha.php'; ?>
-                <?php elseif ($atributo == 'hora'): ?>
-                    <?php require 'views/input/hora.php'; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

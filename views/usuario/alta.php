@@ -16,12 +16,10 @@
                     <?php if ($atributo == 'correo'): ?>
                         <?php require 'views/input/email.php'; ?>
                     <?php elseif ($atributo == 'rol'): ?>
-                        <?php require 'views/input/number.php'; ?>
+                        <?php require 'views/input/rol.php'; ?>
                     <?php else: ?>
                         <?php require 'views/input/text.php'; ?> 
                     <?php endif; ?>
-                <?php elseif ($atributo == 'actual'): ?>
-                    <?php require 'views/input/actual.php'; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

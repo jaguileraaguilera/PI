@@ -1,1 +1,0 @@
-<input style="display:none;" type="text" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>" value="<?=date("h:i:s")?>">
