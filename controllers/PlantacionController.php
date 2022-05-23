@@ -55,6 +55,8 @@ class PlantacionController {
     echo "POR AQUÍ VA EL CORTE";
     var_dump($_POST);
 
+    // la zona  la pasa como string con los valores ['1', '2', '3']
+
     // EL ACTUAL SE DEFINE A 1 EN EL REPOSITORIO
   }
 
