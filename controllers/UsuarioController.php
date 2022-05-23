@@ -88,8 +88,6 @@ class UsuarioController {
   //   return $this -> service -> datos_usuario($correo_usuario);
   // }
 
-  
-
   // public function registro() {
   //   // Rescribirla
   //   //  si es admin : $_POST["esAdmin"]= "1" sino: -> $_POST["esAdmin"] = "0" lo pasamos a entero

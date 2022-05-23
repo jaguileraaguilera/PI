@@ -20,4 +20,8 @@ class EntregaService {
     public function borrar(string $dni_Entrega): void {
         $this -> repository -> borrar($dni_Entrega);
     }
+
+    public function datos_entregas_correo($correo) {
+        return $this -> repository -> datos_entregas_correo($correo);
+    }
 }

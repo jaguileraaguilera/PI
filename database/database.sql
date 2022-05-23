@@ -91,12 +91,18 @@ CREATE TABLE IF NOT EXISTS entrega (
     bruto           float,
     neto            float,
     id_plantacion   int,
+    actual          tinyint,
 
     CONSTRAINT pk_entrega PRIMARY KEY (id_entrega),
     CONSTRAINT fk_entrega_plantacion FOREIGN KEY (id_plantacion) REFERENCES plantacion(id_plantacion)
 )ENGINE=InnoDb DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- INSERT INTO entrega (fecha, hora, tara, bruto, neto, id_plantacion) VALUES (
-
-
--- );
+INSERT INTO entrega (fecha, hora, tara, bruto, neto, id_plantacion, actual) VALUES (
+    '2022-03-17',
+    '11:05:34',
+    30.5,
+    140.5,
+    110,
+    1,
+    1
+);

@@ -3,139 +3,87 @@ namespace models;
 
 class Entrega {
     function __construct(
-        private int $id_entrega,
-        private string $fecha,
-        private string $hora,
-        private float $tara,
-        private float $bruto,
-        private float $neto,
-        private int $id_plantacion
+        public int $id_entrega,
+        public string $fecha,
+        public string $hora,
+        public float $tara,
+        public float $bruto,
+        public float $neto,
+        public int $id_plantacion,
+        public int $actual
+        
     ){}
 
-    /**
-     * Get the value of id_entrega
-     */
-    public function getIdEntrega()
-    {
-            return $this->id_entrega;
+    public function getIdEntrega() {
+        return $this->id_entrega;
     }
 
-    /**
-     * Set the value of id_entrega
-     */
-    public function setIdEntrega($id_entrega): self
-    {
-            $this->id_entrega = $id_entrega;
-
-            return $this;
+    public function setIdEntrega($id_entrega): self {
+        $this->id_entrega = $id_entrega;
+        return $this;
     }
 
-    /**
-     * Get the value of fecha
-     */
-    public function getFecha()
-    {
-            return $this->fecha;
+    public function getFecha() {
+        return $this->fecha;
     }
 
-    /**
-     * Set the value of fecha
-     */
-    public function setFecha($fecha): self
-    {
-            $this->fecha = $fecha;
-
-            return $this;
+    public function setFecha($fecha): self {
+        $this->fecha = $fecha;
+        return $this;
     }
 
-    /**
-     * Get the value of hora
-     */
-    public function getHora()
-    {
-            return $this->hora;
+    public function getHora() {
+        return $this->hora;
     }
 
-    /**
-     * Set the value of hora
-     */
-    public function setHora($hora): self
-    {
-            $this->hora = $hora;
-
-            return $this;
+    public function setHora($hora): self {
+        $this->hora = $hora;
+        return $this;
     }
 
-    /**
-     * Get the value of tara
-     */
-    public function getTara()
-    {
-            return $this->tara;
+    public function getTara() {
+        return $this->tara;
     }
 
-    /**
-     * Set the value of tara
-     */
-    public function setTara($tara): self
-    {
-            $this->tara = $tara;
-
-            return $this;
+    public function setTara($tara): self{
+        $this->tara = $tara;
+        return $this;
     }
 
-    /**
-     * Get the value of bruto
-     */
-    public function getBruto()
-    {
-            return $this->bruto;
+    public function getBruto() {
+        return $this->bruto;
     }
 
-    /**
-     * Set the value of bruto
-     */
-    public function setBruto($bruto): self
-    {
-            $this->bruto = $bruto;
-
-            return $this;
+    public function setBruto($bruto): self {
+        $this->bruto = $bruto;
+        return $this;
     }
 
-    /**
-     * Get the value of neto
-     */
-    public function getNeto()
-    {
-            return $this->neto;
+    public function getNeto() {
+        return $this->neto;
     }
 
-    /**
-     * Set the value of neto
-     */
-    public function setNeto($neto): self
-    {
-            $this->neto = $neto;
-
-            return $this;
+    public function setNeto($neto): self {
+        $this->neto = $neto;
+        return $this;
     }
 
-    /**
-     * Get the value of id_plantacion
-     */
-    public function getIdPlantacion()
-    {
-            return $this->id_plantacion;
+    public function getIdPlantacion() {
+        return $this->id_plantacion;
     }
 
-    /**
-     * Set the value of id_plantacion
-     */
-    public function setIdPlantacion($id_plantacion): self
-    {
-            $this->id_plantacion = $id_plantacion;
+    public function setIdPlantacion($id_plantacion): self {
+        $this->id_plantacion = $id_plantacion;
+        return $this;
+    }
 
-            return $this;
+    public function getActual() {
+        return $this->actual;
+    }
+
+    public function setActual($actual): self {
+        $this->actual = $actual;
+        return $this;
     }
 
     public static function fromArray(array $data) :Entrega {
@@ -147,6 +95,7 @@ class Entrega {
             $data['bruto'],
             $data['neto'],
             $data['id_plantacion'],
+            $data['actual']
         );
     }
 }
