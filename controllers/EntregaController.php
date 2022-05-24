@@ -54,6 +54,10 @@ class EntregaController {
     return $objeto;
   }
 
+  public function modificar() {
+    var_dump($_POST);
+  }
+
   public function alta() {
     if (isset($_POST['tara']) && !empty($_POST['tara'])) {
       $tara = filter_var( $_POST['tara'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);

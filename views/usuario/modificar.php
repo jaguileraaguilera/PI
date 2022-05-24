@@ -11,17 +11,17 @@
     <form action="<?=htmlspecialchars(base_url."/Usuario/modificar")?>" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
-                <?php if (($atributo != 'actual') && ($atributo != 'rol')): ?>
+                <?php if (($atributo != 'id_usuario') && ($atributo != 'actual') && ($atributo != 'rol')): ?>
                     <?php require 'views/label/formateada.php'; ?>
-                    <?php if ($atributo == 'id_usuario'): ?>
-                        <?php require 'views/input/id_disabled.php'; ?>
-                    <?php elseif ($atributo == 'correo'): ?>
+                    <?php if ($atributo == 'correo'): ?>
                         <?php require 'views/input/email.php'; ?>
                     <?php elseif ($atributo == 'telefono'): ?>
                         <?php require 'views/input/telefono.php'; ?>
                     <?php else: ?>
                         <?php require 'views/input/text.php'; ?>
                     <?php endif; ?>
+                <?php elseif ($atributo == 'id_usuario'): ?>
+                    <?php require 'views/input/id_usuario.php'; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

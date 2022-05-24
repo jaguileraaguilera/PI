@@ -11,19 +11,21 @@
     <form action="<?=htmlspecialchars(base_url."/Plantacion/modificar")?>" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
-                <?php require 'views/label/formateada.php'; ?>
-                <?php if ($atributo == 'id_plantacion'): ?>
-                    <?php require 'views/input/id_disabled.php'; ?>
-                <?php elseif ($atributo == 'variedad'): ?>
-                    <?php require 'views/input/text.php'; ?>
-                <?php elseif ($atributo == 'zona'): ?>
-                    <?php require 'views/input/zona.php'; ?>
-                <?php elseif ($atributo == 'actual'): ?>
-                    <?php require 'views/input/actual.php'; ?>
-                <?php elseif ($atributo == 'anio'): ?>
-                    <?php require 'views/input/anio.php'; ?>
+                <?php if ($atributo != 'id_plantacion'): ?>
+                    <?php require 'views/label/formateada.php'; ?>
+                    <?php if ($atributo == 'variedad'): ?>
+                        <?php require 'views/input/text.php'; ?>
+                    <?php elseif ($atributo == 'zona'): ?>
+                        <?php require 'views/input/zona.php'; ?>
+                    <?php elseif ($atributo == 'actual'): ?>
+                        <?php require 'views/input/actual.php'; ?>
+                    <?php elseif ($atributo == 'anio'): ?>
+                        <?php require 'views/input/anio.php'; ?>
+                    <?php else: ?>
+                        <?php require 'views/input/number.php'; ?>
+                    <?php endif; ?>
                 <?php else: ?>
-                    <?php require 'views/input/number.php'; ?>
+                    <?php require 'views/input/id_plantacion.php'; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
