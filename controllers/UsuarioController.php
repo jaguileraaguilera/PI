@@ -27,7 +27,7 @@ class UsuarioController {
       while (!$encontrado) {
         if (password_verify($_SESSION['password'], $usuarios[$i] -> getPassword())) {
           $encontrado = true;
-          $password = $usuarios[$i] -> getPassword();
+          $_SESSION['password_cifrada']= $usuarios[$i] -> getPassword();
         }
         else {
           $i++;
@@ -35,7 +35,7 @@ class UsuarioController {
       }
     }
 
-    $objeto = $this -> service -> inicia_sesion($_SESSION['correo'], $password);
+    $objeto = $this -> service -> inicia_sesion($_SESSION['correo'], $_SESSION['password_cifrada']);
     if ($objeto) {
       $_SESSION['rol'] = $objeto -> getRol();
       $_SESSION['nombre'] = $objeto -> getNombre();
