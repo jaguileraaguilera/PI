@@ -14,7 +14,7 @@
                 <?php if (in_array($atributo, ['bruto', 'tara', 'id_plantacion'])): ?>
                     <?php require 'views/label/formateada.php'; ?>
                     <?php if ($atributo == 'id_plantacion'): ?>
-                        <?php require 'views/input/number.php'; ?>
+                        <?php require 'views/input/id_plantacion_select.php'; ?>
                     <?php else: ?>
                         <?php require 'views/input/tara_bruto.php'; ?>
                     <?php endif; ?>

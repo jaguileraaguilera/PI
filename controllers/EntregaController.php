@@ -37,6 +37,8 @@ class EntregaController {
   public function nueva() {
     session_start();
     if (isset($_SESSION['correo'])) {
+      $plantacionController = new PlantacionController();
+      $plantaciones = $plantacionController -> extraer_todas();
       $array_objetos = $this -> service -> listar();
       $objeto = $array_objetos[0];
       require_once 'views/entrega/alta.php';
@@ -58,7 +60,6 @@ class EntregaController {
   }
 
   public function modificar() {
-    var_dump($_POST);
     $id_entrega = (int) $_POST['id_entrega'];
 
     if (isset($_POST['tara']) && !empty($_POST['tara'])) {
