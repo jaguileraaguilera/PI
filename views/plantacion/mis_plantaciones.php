@@ -6,20 +6,21 @@
     <li class="breadcrumb-item active" aria-current="page">Mis plantaciones</li>
 <?php require_once 'views/bc/close.php'; ?>
 
+
 <?php require_once 'views/tables/open.php'; ?>
     <?php foreach($array_objetos as $objeto): ?>
         <tr>
-            <?php require_once 'views/tables/tabular_objeto.php'; ?>
+            <?php require 'views/tables/tabular_objeto.php'; ?>
             <td>
-                <form action="<?=htmlspecialchars(base_url."/ver_form_modificar")?>" method="POST">
-                    <?php require_once 'views/input/id_plantacion.php'; ?>
-                    <?php require_once 'views/btn/modificar.php'; ?>
+                <form action="<?=htmlspecialchars(base_url."/Plantacion/ver_form_modificar")?>" method="POST">
+                    <?php require 'views/input/id_plantacion.php'; ?>
+                    <?php require 'views/btn/modificar.php'; ?>
                 </form>
             </td>
             <td>
                 <form action="<?=htmlspecialchars(base_url."/Plantacion/borrar")?>" method="POST">
-                    <?php require_once 'views/input/id_plantacion.php'; ?>
-                    <?php require_once 'views/btn/borrar_disabled.php'; ?>
+                    <?php require 'views/input/id_plantacion.php'; ?>
+                    <?php require 'views/btn/borrar_disabled.php'; ?>
                 </form>
             </td>
         </tr>
