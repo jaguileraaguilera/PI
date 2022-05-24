@@ -49,6 +49,17 @@ class EntregaRepository {
         );
     }
 
+    public function modificar($id_entrega, $parametros) {
+        foreach ($parametros as $atributo => $valor) {
+            $this -> conexion -> consulta (
+                "UPDATE entrega 
+                SET {$atributo} = '{$valor}'
+                WHERE id_entrega = '{$id_entrega}';
+                "
+            );
+        }
+    }
+
     public function alta($tara, $bruto, $neto, $fecha, $hora, $id_plantacion) {
         $this -> conexion -> consulta(
             "INSERT INTO entrega(fecha, hora, tara, bruto, neto, id_plantacion, actual) VALUES (

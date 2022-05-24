@@ -28,4 +28,8 @@ class EntregaService {
     public function alta($tara, $bruto, $neto, $fecha, $hora, $id_plantacion) {
         return $this -> repository -> alta($tara, $bruto, $neto, $fecha, $hora, $id_plantacion);
     }
+
+    public function modificar($id_entrega, $parametros) {
+        return $this-> repository -> modificar($id_entrega, $parametros);
+    }
 }

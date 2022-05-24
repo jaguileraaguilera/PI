@@ -56,6 +56,39 @@ class EntregaController {
 
   public function modificar() {
     var_dump($_POST);
+    $id_entrega = (int) $_POST['id_entrega'];
+
+    if (isset($_POST['tara']) && !empty($_POST['tara'])) {
+      $tara = (float) filter_var( $_POST['tara'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    }
+
+    if (isset($_POST['bruto']) && !empty($_POST['bruto'])) {
+      $bruto = (float) filter_var( $_POST['bruto'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    }
+
+    if (isset($_POST['id_plantacion']) && !empty($_POST['id_plantacion'])) {
+      $id_plantacion = (int) filter_var($_POST['id_plantacion'], FILTER_SANITIZE_NUMBER_INT);
+    }
+
+    if (!is_null($tara) && !is_null($bruto) && !is_null($id_plantacion)) {
+      $neto = $bruto - $tara;
+      $fecha = $_POST['fecha'];
+      $hora = $_POST['hora'];
+      $parametros = array(
+        'tara' => $tara,
+        'bruto' => $bruto,
+        'neto' => $neto,
+        'fecha' => $fecha,
+        'hora' => $hora,
+        'id_plantacion' =>  $id_plantacion,
+        'actual' => 1
+      );
+
+      // var_dump($parametros);
+
+      $this -> service -> modificar($id_entrega, $parametros);
+      header("Location:".base_url."/Entrega/listar");
+    }
   }
 
   public function alta() {
