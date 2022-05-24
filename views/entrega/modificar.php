@@ -14,7 +14,7 @@
                 <?php if (($atributo != 'id_entrega') && ($atributo != 'neto') && ($atributo != 'actual')): ?>
                     <?php require 'views/label/formateada.php'; ?>
                     <?php if ($atributo == 'id_plantacion'): ?>
-                        <?php require 'views/input/number.php'; ?>
+                        <?php require 'views/input/id_plantacion_select.php'; ?>
                     <?php elseif ($atributo == 'fecha'): ?>
                         <?php require 'views/input/fecha.php'; ?>
                     <?php elseif ($atributo == 'hora'): ?>

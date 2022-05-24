@@ -15,8 +15,12 @@ class PlantacionController {
     require_once 'views/navlist/navlist_plantacion.php';
   }
 
+  public function extraer_todas() {
+    return $this -> service -> listar();
+  }
+
   public function listar() {
-    $array_objetos = $this -> service -> listar();
+    $array_objetos = $this -> extraer_todas();
     require_once 'views/plantacion/ver_todas.php';
     return $array_objetos;
   }

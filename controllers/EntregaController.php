@@ -1,6 +1,7 @@
 <?php
 namespace controllers;
 use services\EntregaService;
+use controllers\PlantacionController;
 use controllers\ErrorController;
 
 class EntregaController {
@@ -49,6 +50,8 @@ class EntregaController {
   }
 
   public function ver_form_modificar() {
+    $plantacionController = new PlantacionController();
+    $plantaciones = $plantacionController -> extraer_todas();
     $objeto = $this -> service -> datos_entrega($_POST['id_entrega']);
     require_once 'views/entrega/modificar.php';
     return $objeto;
