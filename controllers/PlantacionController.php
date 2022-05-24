@@ -27,6 +27,8 @@ class PlantacionController {
   }
 
   public function ver_form_modificar() {
+    $usuarioController = new UsuarioController();
+    $usuarios = $usuarioController -> extraer_todos();
     $objeto = $this -> service -> datos_plantacion_id((int) $_POST['id_plantacion']);
     require_once 'views/plantacion/modificar.php';
     return $objeto;
