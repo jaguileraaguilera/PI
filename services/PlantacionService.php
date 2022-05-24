@@ -28,4 +28,8 @@ class PlantacionService {
     public function alta($variedad, $anio, $zona, $id_usuario) {
         return $this -> repository -> alta($variedad, $anio, $zona, $id_usuario);
     }
+
+    public function modificar($id_plantacion, $parametros) {
+        return $this-> repository -> modificar($id_plantacion, $parametros);
+    }
 }

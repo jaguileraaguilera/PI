@@ -60,6 +60,46 @@ class PlantacionController {
     }
   }
 
+  public function modificar() {
+    $id_plantacion = (int) $_POST['id_plantacion'];
+
+    if (isset($_POST['anio']) && !empty($_POST['anio'])) {
+      $anio = (int) filter_var( $_POST['anio'], FILTER_SANITIZE_NUMBER_INT);
+    }
+
+    if (isset($_POST['zona']) && !empty($_POST['zona'])) {
+      $zona = (int) filter_var($_POST['zona'], FILTER_SANITIZE_NUMBER_INT);
+    }
+
+    if (isset($_POST['id_usuario']) && !empty($_POST['id_usuario'])) {
+      $id_usuario = (int) filter_var($_POST['id_usuario'], FILTER_SANITIZE_NUMBER_INT);
+    }
+
+    if (isset($_POST['variedad']) && !empty($_POST['variedad'])) {
+      $variedad = filter_var($_POST['variedad'], FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+
+    // id_plantacion   int auto_increment,
+    // variedad        varchar(255),
+    // anio            int,
+    // zona            tinyint,
+    // id_usuario      int,
+    // actual          tinyint,
+
+    if (!is_null($anio) && !is_null($zona) && !is_null($id_usuario)) {
+      $parametros = array(
+        'variedad' => $variedad,
+        'anio' => $anio,
+        'zona' => $zona,
+        'id_usuario' => $id_usuario
+      );
+
+      $this -> service -> modificar($id_plantacion, $parametros);
+      header("Location:".base_url."/Plantacion/listar");
+    }
+
+  }
+
   public function alta() {
     if (isset($_POST['anio']) && !empty($_POST['anio'])) {
       $anio = (int) filter_var( $_POST['anio'], FILTER_SANITIZE_NUMBER_INT);

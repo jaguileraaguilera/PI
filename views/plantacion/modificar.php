@@ -11,14 +11,12 @@
     <form action="<?=htmlspecialchars(base_url."/Plantacion/modificar")?>" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
-                <?php if ($atributo != 'id_plantacion'): ?>
+                <?php if (($atributo != 'id_plantacion') && ($atributo != 'actual')): ?>
                     <?php require 'views/label/formateada.php'; ?>
                     <?php if ($atributo == 'variedad'): ?>
                         <?php require 'views/input/text.php'; ?>
                     <?php elseif ($atributo == 'zona'): ?>
                         <?php require 'views/input/zona.php'; ?>
-                    <?php elseif ($atributo == 'actual'): ?>
-                        <?php require 'views/input/actual.php'; ?>
                     <?php elseif ($atributo == 'anio'): ?>
                         <?php require 'views/input/anio.php'; ?>
                     <?php else: ?>

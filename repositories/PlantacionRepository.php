@@ -43,6 +43,17 @@ class PlantacionRepository {
         );
         return $this -> extraer_registro();
     }
+
+    public function modificar($id_plantacion, $parametros) {
+        foreach ($parametros as $atributo => $valor) {
+            $this -> conexion -> consulta (
+                "UPDATE plantacion 
+                SET {$atributo} = '{$valor}'
+                WHERE id_plantacion = '{$id_plantacion}';
+                "
+            );
+        }
+    }
     
     public function alta($variedad, $anio, $zona, $id_usuario) {
         $this -> conexion -> consulta(
