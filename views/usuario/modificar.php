@@ -11,7 +11,7 @@
     <form action="<?=htmlspecialchars(base_url."/Usuario/modificar")?>" method="POST">
         <?php foreach ($objeto as $atributo => $valor) : ?>
             <div class="mb-3">
-                <?php if (($atributo != 'id_usuario') && ($atributo != 'actual') && ($atributo != 'rol')): ?>
+                <?php if (!in_array($atributo, ['id_usuario', 'actual', 'password', 'rol'])) : ?>
                     <?php require 'views/label/formateada.php'; ?>
                     <?php if ($atributo == 'correo'): ?>
                         <?php require 'views/input/email.php'; ?>
@@ -22,6 +22,8 @@
                     <?php endif; ?>
                 <?php elseif ($atributo == 'id_usuario'): ?>
                     <?php require 'views/input/id_hidden.php'; ?>
+                <?php elseif (($atributo == 'password') && ($_SESSION['correo'] == $objeto -> getCorreo())): ?>
+                    <?php require 'views/input/password.php'; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
