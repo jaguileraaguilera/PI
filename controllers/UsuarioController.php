@@ -46,8 +46,12 @@ class UsuarioController {
     require_once 'views/navlist/navlist_usuario.php';
   }
 
+  public function extraer_todos() {
+    return $this -> service -> listar();
+  }
+
   public function listar() {
-    $array_objetos = $this -> service -> listar();
+    $array_objetos = $this -> extraer_todos();
     require_once 'views/usuario/ver_todos.php';
     return $array_objetos;
   }

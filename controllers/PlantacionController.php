@@ -1,6 +1,7 @@
 <?php
 namespace controllers;
 use services\PlantacionService;
+use controllers\UsuarioController;
 use controllers\ErrorController;
 
 class PlantacionController {
@@ -48,6 +49,8 @@ class PlantacionController {
   public function nueva() {
     session_start();
     if (isset($_SESSION['correo'])) {
+      $usuarioController = new UsuarioController();
+      $usuarios = $usuarioController -> extraer_todos();
       $array_objetos = $this -> service -> listar();
       $objeto = $array_objetos[0];
       require_once 'views/plantacion/alta.php';

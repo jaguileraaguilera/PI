@@ -20,7 +20,7 @@
                     <?php elseif ($atributo == 'anio'): ?>
                         <?php require 'views/input/anio.php'; ?>
                     <?php else: ?>
-                        <?php require 'views/input/number.php'; ?>
+                        <?php require 'views/input/id_usuario_select.php'; ?>
                     <?php endif; ?>
                 <?php endif; ?>
             </div>
