@@ -23,6 +23,7 @@
                 <?php elseif ($atributo == 'id_usuario'): ?>
                     <?php require 'views/input/id_hidden.php'; ?>
                 <?php elseif (($atributo == 'password') && ($_SESSION['correo'] == $objeto -> getCorreo())): ?>
+                    <?php require 'views/label/formateada.php'; ?>
                     <?php require 'views/input/password.php'; ?>
                 <?php endif; ?>
             </div>
