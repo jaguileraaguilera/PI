@@ -19,9 +19,23 @@ class UsuarioController {
     if (!isset($_SESSION['correo']) || (!isset($_SESSION['password']))) {
       $_SESSION['correo'] = $_POST["correo"];
       $_SESSION['password'] = $_POST["password"];
-    };
 
-    $objeto = $this -> service -> inicia_sesion($_SESSION['correo'], $_SESSION['password']);
+      $usuarios = $this -> extraer_todos();
+      $encontrado = false;
+      $i = 0;
+
+      while (!$encontrado) {
+        if (password_verify($_SESSION['password'], $usuarios[$i] -> getPassword())) {
+          $encontrado = true;
+          $password = $usuarios[$i] -> getPassword();
+        }
+        else {
+          $i++;
+        }
+      }
+    }
+
+    $objeto = $this -> service -> inicia_sesion($_SESSION['correo'], $password);
     if ($objeto) {
       $_SESSION['rol'] = $objeto -> getRol();
       $_SESSION['nombre'] = $objeto -> getNombre();
@@ -86,90 +100,34 @@ class UsuarioController {
   }
 
   public function alta() {
-    echo "POR AQUÍ VA EL CORTE";
-    var_dump($_POST);
-    // El rol lo pasa como string con los valores ['0', '1', '2']
+    $campos_string = array('dni','nombre', 'apellidos', 'direccion', 'localidad', 'telefono');
+    $campos_validados = array();
 
-    // EL ACTUAL SE DEFINE A 1 EN EL REPOSITORIO
+    foreach ($campos_string as $campo) {
+      if (isset($_POST[$campo]) && !empty($_POST[$campo])) {
+        array_push($campos_validados, filter_var( $_POST[$campo], FILTER_SANITIZE_SPECIAL_CHARS));
+      }
+    }
+
+    if (isset($_POST['correo']) && !empty($_POST['correo'])) {
+      $correo = filter_var( $_POST['correo'], FILTER_SANITIZE_EMAIL);
+    }
+
+    if (isset($_POST['password']) && !empty($_POST['password'])) {
+      $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    }
+
+    $rol = $_POST['rol'];
+
+    if ( (count($campos_validados)  == count($campos_string)) && isset($correo) && isset($password) && isset($rol)) {
+      $this -> service -> alta($campos_validados, $correo, $password, $rol);
+      header("Location:".base_url."/Usuario/listar");
+    }
   }
 
-  // AQUÍ VA EL CORTE
+  public function modificar() {
+    // CUANDO VAYA A MODIFICAR LA CONTRASEÑA TENGO QUE ENCRIPTARLA CON PASSWORD HASH
+    var_dump($_POST);
+  }
 
-  // public function datos_usuario() {
-  //   $correo_usuario = $_SESSION['correo'];
-  //   return $this -> service -> datos_usuario($correo_usuario);
-  // }
-
-  // public function registro() {
-  //   // Rescribirla
-  //   //  si es admin : $_POST["esAdmin"]= "1" sino: -> $_POST["esAdmin"] = "0" lo pasamos a entero
-  //   $objeto = array(
-  //     'dni' => $_POST['dni'],
-  //     'nombre' => $_POST['nombre'],
-  //     'apellidos' => $_POST['apellidos'],
-  //     'correo' => $_POST['correo'],
-  //     'password' => $_POST['password'],
-  //     'esAdmin' => (int) $_POST['esAdmin']
-  //   );
-  //   $this -> service -> guardar($objeto);
-
-  //   header("Location:".base_url."/Usuario/login");
-  // }
-
-  // public function borrar() {
-  //   $dni_usuario = $_POST['dni'];
-  //   $this -> service -> borrar($dni_usuario);
-
-  //   header("Location:".base_url."/Usuario/ver_opciones_borrado");
-  // }
-
-  // public function consultar_datos() {
-  //   if (session_status() != 2) { //Si la sesión no está iniciada
-  //     session_start();  
-  //   }
-    
-  //   require_once 'views/volver_inicio.php';
-  //   $objeto = $this -> datos_usuario();
-  //   require_once 'views/usuario/consultar_datos.php';
-  // }
-
-  // public function ver_opciones_borrado() {
-  //   require_once 'views/volver_inicio.php';
-  //   $objetos = $this -> listar();
-  //   require_once 'views/Usuario/borrar.php';
-  // }
-
-  // public function ver_opciones_modificar() {
-  //   $objetos = $this -> listar();
-  //   require_once 'views/volver_inicio.php';
-  //   require_once 'views/usuario/elegir_usuario_campos_modificar.php';
-  // }
-
-  // public function ver_formulario_modificar() {
-  //   $dni = $_POST['dni'];
-  //   $opciones = array('nombre', 'apellidos', 'correo', 'password');
-
-  //   foreach ($opciones as $opcion) {
-  //     if (isset($_POST[$opcion])) {
-  //       $opciones_procesar[] = $_POST[$opcion];
-  //     }
-  //   }
-
-  //   require_once 'views/volver_inicio.php';
-  //   $this -> consultar_datos();
-  //   require_once 'views/usuario/modificar.php';
-  // }
-
-  // public function ver_formulario_elegir_datos_modificar() {
-  //   if (session_status() != 2) { //Si la sesión no está iniciada
-  //     session_start();  
-  //   }
-
-  //   $objeto = $this -> datos_usuario();
-  //   $dni = $objeto -> getDni();
-
-  //   require_once 'views/volver_inicio.php';
-  //   $this -> consultar_datos();
-  //   require_once 'views/usuario/elegir_datos_modificar.php';
-  // }
 }

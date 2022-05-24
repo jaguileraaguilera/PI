@@ -13,10 +13,6 @@ class UsuarioService {
         return $this -> repository -> inicia_sesion($correo, $password);
     }
 
-    public function guardar(array $usuario) : void {
-        $this -> repository -> guardar($usuario);
-    }
-
     public function listar() {
         return $this -> repository -> listar();
     }
@@ -31,5 +27,9 @@ class UsuarioService {
 
     public function datos_usuario_correo($correo) {
         return $this -> repository -> datos_usuario_correo($correo);
+    }
+
+    public function alta($campos_validados, $correo, $password, $rol) {
+        return $this -> repository -> alta($campos_validados, $correo, $password, $rol);
     }
 }

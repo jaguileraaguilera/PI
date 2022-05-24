@@ -60,17 +60,21 @@ class UsuarioRepository {
 
         return $usuarios;
     }
-    
-    public function guardar($usuario) {
+
+    public function alta($campos_validados, $correo, $password, $rol) {
         $this -> conexion -> consulta(
-            "INSERT INTO usuario VALUES(
-                '{$usuario['dni']}', 
-                '{$usuario['nombre']}', 
-                '{$usuario['apellidos']}',
-                '{$usuario['correo']}',
-                '{$usuario['password']}', 
-                '{$usuario['esAdmin']}');
-            "
+            "INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
+                '{$campos_validados[0]}',
+                '{$campos_validados[1]}',
+                '{$campos_validados[2]}',
+                '{$campos_validados[3]}',
+                '{$campos_validados[4]}',
+                '{$campos_validados[5]}',
+                '{$correo}',
+                '{$password}',
+                '{$rol}',
+                1
+            );"
         );
     }
 }
