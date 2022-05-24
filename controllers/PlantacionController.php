@@ -61,12 +61,26 @@ class PlantacionController {
   }
 
   public function alta() {
-    echo "POR AQUÍ VA EL CORTE";
-    var_dump($_POST);
+    if (isset($_POST['anio']) && !empty($_POST['anio'])) {
+      $anio = (int) filter_var( $_POST['anio'], FILTER_SANITIZE_NUMBER_INT);
+    }
 
-    // la zona  la pasa como string con los valores ['1', '2', '3']
+    if (isset($_POST['zona']) && !empty($_POST['zona'])) {
+      $zona = (int) filter_var($_POST['zona'], FILTER_SANITIZE_NUMBER_INT);
+    }
 
-    // EL ACTUAL SE DEFINE A 1 EN EL REPOSITORIO
+    if (isset($_POST['id_usuario']) && !empty($_POST['id_usuario'])) {
+      $id_usuario = (int) filter_var($_POST['id_usuario'], FILTER_SANITIZE_NUMBER_INT);
+    }
+
+    if (isset($_POST['variedad']) && !empty($_POST['variedad'])) {
+      $variedad = filter_var($_POST['variedad'], FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+
+    if (!is_null($anio) && !is_null($zona) && !is_null($id_usuario)) {
+      $this -> service -> alta($variedad, $anio, $zona, $id_usuario);
+      header("Location:".base_url."/Plantacion/listar");
+    }
   }
 
 }

@@ -43,15 +43,18 @@ class PlantacionRepository {
         );
         return $this -> extraer_registro();
     }
-
-    public function guardar($plantacion) {
-        // $this -> conexion -> consulta(
-        //     "INSERT INTO Plantacion VALUES(
-        //         '{$Plantacion['id_plantacion']}',
-
-        //     ');
-        //     "
-        // );
+    
+    public function alta($variedad, $anio, $zona, $id_usuario) {
+        $this -> conexion -> consulta(
+            "INSERT INTO plantacion(variedad, anio, zona, id_usuario, actual) VALUES(
+                '{$variedad}',
+                '{$anio}',
+                '{$zona}',
+                '{$id_usuario}',
+                1
+            );
+            "
+        );
     }
 
     public function extraer_todos() {

@@ -9,10 +9,6 @@ class PlantacionService {
         $this -> repository = new PlantacionRepository();
     }
 
-    public function guardar(array $plantacion) : void {
-        $this -> repository -> guardar($plantacion);
-    }
-
     public function listar() {
         return $this -> repository -> listar();
     }
@@ -27,5 +23,9 @@ class PlantacionService {
 
     public function datos_plantacion_id($id) {
         return $this -> repository -> datos_plantacion_id($id);
+    }
+
+    public function alta($variedad, $anio, $zona, $id_usuario) {
+        return $this -> repository -> alta($variedad, $anio, $zona, $id_usuario);
     }
 }
