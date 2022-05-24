@@ -32,4 +32,8 @@ class UsuarioService {
     public function alta($campos_validados, $correo, $password, $rol) {
         return $this -> repository -> alta($campos_validados, $correo, $password, $rol);
     }
+
+    public function modificar($id_usuario, $campos_validados) {
+        return $this -> repository -> modificar($id_usuario, $campos_validados);
+    }
 }

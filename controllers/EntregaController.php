@@ -88,8 +88,6 @@ class EntregaController {
         'actual' => 1
       );
 
-      // var_dump($parametros);
-
       $this -> service -> modificar($id_entrega, $parametros);
       header("Location:".base_url."/Entrega/listar");
     }

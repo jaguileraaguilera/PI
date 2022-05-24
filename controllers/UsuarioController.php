@@ -126,8 +126,45 @@ class UsuarioController {
   }
 
   public function modificar() {
-    // CUANDO VAYA A MODIFICAR LA CONTRASEÑA TENGO QUE ENCRIPTARLA CON PASSWORD HASH
-    var_dump($_POST);
-  }
+    session_start();
+    $id_usuario = $_POST['id_usuario'];
 
+    $campos_string = array('dni','nombre', 'apellidos', 'direccion', 'localidad', 'telefono');
+    $campos_validados = array();
+
+    foreach ($campos_string as $campo) {
+      if (isset($_POST[$campo]) && !empty($_POST[$campo])) {
+        $campos_validados[$campo] = filter_var( $_POST[$campo], FILTER_SANITIZE_SPECIAL_CHARS);
+      }
+    }
+
+    if (isset($_POST['correo']) && !empty($_POST['correo'])) {
+      $correo = filter_var( $_POST['correo'], FILTER_SANITIZE_EMAIL);
+    }
+
+    if (isset($_POST['password']) && !empty($_POST['password'])) {
+      if ($_POST['password'] != $_SESSION['password']) {
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      }
+      else {
+        $password_igual = true;
+      }
+      
+    }
+
+    if ((count($campos_validados)  == count($campos_string)) && isset($correo)) {
+      if (isset($password)) {
+        $campos_validados['password'] = $password;
+      }
+
+      $campos_validados['correo'] = $correo;
+      $this -> service ->  modificar($id_usuario, $campos_validados);
+      if (isset($password_igual)) {
+        header("Location:".base_url."/Usuario/mis_datos");
+      }
+      else {
+        $this -> logout();
+      }
+    }
+  }
 }

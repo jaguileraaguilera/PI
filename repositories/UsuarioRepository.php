@@ -77,4 +77,15 @@ class UsuarioRepository {
             );"
         );
     }
+
+    public function modificar($id_usuario, $parametros) {
+        foreach ($parametros as $atributo => $valor) {
+            $this -> conexion -> consulta (
+                "UPDATE usuario
+                SET {$atributo} = '{$valor}'
+                WHERE id_usuario = '{$id_usuario}';
+                "
+            );
+        }
+    }
 }
