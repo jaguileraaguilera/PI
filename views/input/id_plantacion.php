@@ -1,0 +1,1 @@
+<input style="display:none;" value="<?=$objeto->getIdPlantacion()?>" name="id_plantacion" id="id_plantacion">
