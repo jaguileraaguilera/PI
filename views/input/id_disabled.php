@@ -1,2 +1,0 @@
-<input type="text" value="<?=$valor?>" class="form-control" id="<?=$atributo?>" name="<?=$atributo?>"  aria-describedby="idHelp" disabled>
-<div id="idHelp" class="form-text">El identificador está deshabilitado, no se puede modificar</div>

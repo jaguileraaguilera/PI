@@ -25,7 +25,7 @@
                         <?php require 'views/input/number.php'; ?>
                     <?php endif; ?>
                 <?php else: ?>
-                    <?php require 'views/input/id_plantacion.php'; ?>
+                    <?php require 'views/input/id_hidden.php'; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

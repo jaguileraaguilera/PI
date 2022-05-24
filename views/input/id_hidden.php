@@ -1,0 +1,1 @@
+<input style="display:none;" value="<?=$valor?>" name="<?=$atributo?>" id="<?=$atributo?>">

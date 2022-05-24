@@ -23,7 +23,7 @@
                         <?php require 'views/input/tara_bruto.php'; ?>
                     <?php endif; ?>
                 <?php elseif ($atributo == 'id_entrega'): ?>
-                    <?php require 'views/input/id_entrega.php'; ?>
+                    <?php require 'views/input/id_hidden.php'; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

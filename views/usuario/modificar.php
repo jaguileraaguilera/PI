@@ -21,7 +21,7 @@
                         <?php require 'views/input/text.php'; ?>
                     <?php endif; ?>
                 <?php elseif ($atributo == 'id_usuario'): ?>
-                    <?php require 'views/input/id_usuario.php'; ?>
+                    <?php require 'views/input/id_hidden.php'; ?>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>

@@ -1,1 +1,0 @@
-<input style="display:none;" value="<?=$objeto->getIdUsuario()?>" name="id_usuario" id="id_usuario">
