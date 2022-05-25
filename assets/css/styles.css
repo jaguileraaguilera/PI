@@ -1,4 +1,18 @@
+main {
+    background-image: url(../img/esparragos.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
 
+.form-control:focus, .form-select:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #198754;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
 
 .form {
     display: flex;
@@ -7,13 +21,22 @@
     padding-top: 40px;
     padding-bottom: 40px;
 }
-/* 
-.form.modificar{
-
-} */
 
 .form-signin {
     max-width: 330px;
-    background-color: rgba(13, 110, 253, 0.2);
+    background-color: rgba(158, 185, 69, 0.9);
     padding: 15px;
+}
+
+.table-hover > tbody > tr:hover > * {
+  --bs-table-accent-bg: rgba(158, 185, 69, 0.6);
+  color: var(--bs-table-hover-color);
+}
+
+.navbar-text {
+    font-size: large;
+}
+
+a {
+    color: #198754;
 }

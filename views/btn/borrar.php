@@ -1,1 +1,1 @@
-<button type="submit" class="btn btn-primary">Borrar</button>
+<button type="submit" class="btn btn-success">Borrar</button>

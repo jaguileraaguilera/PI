@@ -1,1 +1,1 @@
-<button type="submit" class="btn btn-primary" disabled>Modificar</button>
+<button type="submit" class="btn btn-success" disabled>Modificar</button>

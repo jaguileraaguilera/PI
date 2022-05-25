@@ -1,1 +1,1 @@
-<button type="submit" class="btn btn-primary">Dar de alta</button>
+<button type="submit" class="btn btn-success">Dar de alta</button>

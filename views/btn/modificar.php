@@ -1,1 +1,1 @@
-<button type="submit" class="btn btn-primary">Modificar</button>
+<button type="submit" class="btn btn-success">Modificar</button>

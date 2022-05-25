@@ -1,1 +1,1 @@
-<button type="submit" class="btn btn-primary">Guardar nuevos valores</button>
+<button type="submit" class="btn btn-success">Guardar nuevos valores</button>
