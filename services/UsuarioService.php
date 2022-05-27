@@ -36,4 +36,8 @@ class UsuarioService {
     public function modificar($id_usuario, $campos_validados) {
         return $this -> repository -> modificar($id_usuario, $campos_validados);
     }
+
+    public function getUsuarioFromPlantacion($id_plantacion) {
+        return $this -> repository -> getUsuarioFromPlantacion($id_plantacion);
+    }
 }

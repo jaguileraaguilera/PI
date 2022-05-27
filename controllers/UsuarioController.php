@@ -167,4 +167,8 @@ class UsuarioController {
       }
     }
   }
+
+  public function getUsuarioFromPlantacion($id_plantacion) {
+    return $this -> service -> getUsuarioFromPlantacion($id_plantacion);
+  }
 }

@@ -2,7 +2,11 @@
 namespace controllers;
 use services\EntregaService;
 use controllers\PlantacionController;
+use controllers\UsuarioController;
 use controllers\ErrorController;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 class EntregaController {
   private EntregaService $service;
@@ -110,8 +114,84 @@ class EntregaController {
       $neto = $bruto - $tara;
       $fecha = date("Y-m-d");
       $hora = date("H:i:s");
-      $this -> service -> alta($tara, $bruto, $neto, $fecha, $hora, $id_plantacion);
-      header("Location:".base_url."/Entrega/listar");
+      $realizada = $this -> service -> alta($tara, $bruto, $neto, $fecha, $hora, $id_plantacion);
+
+      if ($realizada) {
+        $this -> enviar_ticket($tara, $bruto, $neto, $fecha, $hora, $id_plantacion);
+        header("Location:".base_url."/Entrega/nueva");
+      }
+    }
+  }
+
+  public function enviar_ticket($tara, $bruto, $neto, $fecha, $hora, $id_plantacion) {
+    $usuarioController = new UsuarioController();
+    $socio = $usuarioController -> getUsuarioFromPlantacion((int) $id_plantacion);
+    $plantacionController = new PlantacionController();
+    $plantacion = $plantacionController -> datos_plantacion($id_plantacion);
+    $zona = $plantacion -> getZona();
+    $num_socio = $socio -> getIdUsuario();
+    $nombre = $socio -> getNombre();
+    $apellidos = $socio -> getApellidos();
+
+    require 'vendor/autoload.php';
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                    
+        $mail->isSMTP();                                            
+        $mail->Host       = 'smtp.gmail.com';                    
+        $mail->SMTPAuth   = true;                                   
+        $mail->Username   = 'basculacosafra@gmail.com';                     
+        $mail->Password   = 'bascula10@cosafra.com';                               
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
+        $mail->Port       = 465;
+        $mail->SMTPDebug  = 0;                                    
+
+        //Recipients
+        $mail->setFrom('basculacosafra@gmail.com');  
+        $mail->addAddress($socio -> getCorreo());
+
+        //Content
+        $mail->isHTML(true);                                
+        $mail->Subject = "Ticket plantacion $id_plantacion, fecha: $fecha";
+        $mail->Body    = "
+          <h1>Ticket de entrega</h1>
+          <div>
+            <p>Fecha: $fecha</p>
+            <p>Hora: $hora</p>
+            <p>Socio: $num_socio $nombre $apellidos</p>
+          </div>
+          <h2>Descripción:</h2>
+          <div>
+            <p>Producto: Espárragos UT$zona</p>
+            <p>Peso bruto (kg): $bruto</p>
+            <p>Tara (kg): $tara</p>
+            <p>Peso neto (kg): $neto</p>
+          </div>
+          <br>
+          <p>En Huétor-Tájar a $fecha</p>
+        ";
+        $mail->AltBody = "
+          TICKET DE ENTREGA
+
+            Fecha: $fecha
+            Hora: $hora
+            Socio: $num_socio $nombre $apellidos
+          
+          DESCRIPCIÓN:
+
+            Producto: Espárragos UT$zona
+            Peso bruto (kg): $bruto
+            Tara (kg): $tara
+            Peso neto (kg): $neto
+            
+          En Huétor-Tájar a $fecha
+        ";
+
+        $mail->send();
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
   }
 }

@@ -26,6 +26,10 @@ class PlantacionController {
     return $array_objetos;
   }
 
+  public function datos_plantacion($id_plantacion) {
+    return $this -> service -> datos_plantacion_id($id_plantacion);
+  }
+
   public function ver_form_modificar() {
     $usuarioController = new UsuarioController();
     $usuarios = $usuarioController -> extraer_todos();
@@ -79,13 +83,6 @@ class PlantacionController {
       $variedad = filter_var($_POST['variedad'], FILTER_SANITIZE_SPECIAL_CHARS);
     }
 
-    // id_plantacion   int auto_increment,
-    // variedad        varchar(255),
-    // anio            int,
-    // zona            tinyint,
-    // id_usuario      int,
-    // actual          tinyint,
-
     if (!is_null($anio) && !is_null($zona) && !is_null($id_usuario)) {
       $parametros = array(
         'variedad' => $variedad,
@@ -97,7 +94,6 @@ class PlantacionController {
       $this -> service -> modificar($id_plantacion, $parametros);
       header("Location:".base_url."/Plantacion/listar");
     }
-
   }
 
   public function alta() {

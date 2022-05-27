@@ -72,6 +72,8 @@ class EntregaRepository {
                 1
             );"
         );
+
+        return 1;
     }
 
     public function extraer_todos() {

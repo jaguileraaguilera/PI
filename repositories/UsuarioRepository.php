@@ -88,4 +88,16 @@ class UsuarioRepository {
             );
         }
     }
+
+    public function getUsuarioFromPlantacion($id_plantacion) {
+        $this -> conexion -> consulta(
+            "SELECT usuario.* 
+            FROM usuario, plantacion 
+            WHERE usuario.id_usuario = plantacion.id_usuario
+            AND id_plantacion = '{$id_plantacion}';
+            "
+        );
+
+        return $this -> extraer_registro();
+    }
 }
