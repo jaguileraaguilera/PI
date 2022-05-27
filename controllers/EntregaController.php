@@ -7,7 +7,6 @@ use controllers\ErrorController;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-use Dompdf\Dompdf;
 
 class EntregaController {
   private EntregaService $service;
@@ -158,9 +157,8 @@ class EntregaController {
     <br>
     <p>En Huétor-Tájar a $fecha</p>
     ";
+
     require 'vendor/autoload.php';
-    $dompdf = new Dompdf();
-    $dompdf->loadHtml($cuerpo);
     $mail = new PHPMailer(true);
 
     try {
@@ -178,8 +176,7 @@ class EntregaController {
         //Recipients
         $mail->setFrom('basculacosafra@gmail.com');  
         $mail->addAddress($socio -> getCorreo());
-
-        $mail->addAttachment($dompdf->render(), "ticket_$id_entrega.pdf");    //Optional name
+        $mail->addAddress('basculacosafra@gmail.com');
 
         //Content
         $mail->isHTML(true);                                
