@@ -35,5 +35,5 @@ class EntregaService {
 
     public function get_ultima_entrega() {
         return $this -> repository -> get_ultima_entrega();
-      }
+    }
 }
