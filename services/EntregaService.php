@@ -32,4 +32,8 @@ class EntregaService {
     public function modificar($id_entrega, $parametros) {
         return $this-> repository -> modificar($id_entrega, $parametros);
     }
+
+    public function get_ultima_entrega() {
+        return $this -> repository -> get_ultima_entrega();
+      }
 }

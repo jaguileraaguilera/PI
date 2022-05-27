@@ -76,6 +76,18 @@ class EntregaRepository {
         return 1;
     }
 
+    public function get_ultima_entrega() {
+        $this -> conexion -> consulta(
+            " SELECT * 
+            FROM entrega 
+            WHERE id_entrega = (
+                SELECT MAX(id_entrega) 
+                FROM entrega);
+            "
+        );
+        return $this -> extraer_registro();
+    }
+
     public function extraer_todos() {
         $entregas = array();
         $entregasData = $this -> conexion -> extraer_todos();

@@ -50,6 +50,10 @@ class EntregaController {
     }
   }
 
+  public function get_ultima_entrega() {
+    return $this -> service -> get_ultima_entrega();
+  }
+
   public function borrar() {
     $this -> service -> borrar($_POST['id_entrega']);
     header("Location:".base_url."/Entrega/listar");
@@ -132,6 +136,7 @@ class EntregaController {
     $num_socio = $socio -> getIdUsuario();
     $nombre = $socio -> getNombre();
     $apellidos = $socio -> getApellidos();
+    $id_entrega = $this -> get_ultima_entrega() -> getIdEntrega();
 
     require 'vendor/autoload.php';
     $mail = new PHPMailer(true);
@@ -154,13 +159,16 @@ class EntregaController {
 
         //Content
         $mail->isHTML(true);                                
-        $mail->Subject = "Ticket plantacion $id_plantacion, fecha: $fecha";
+        $mail->Subject = "Ticket $id_entrega. Plantacion $id_plantacion";
         $mail->Body    = "
           <h1>Ticket de entrega</h1>
+          <h2>Datos del ticket:</h2>
           <div>
+            <p>Número: $id_entrega</p>
             <p>Fecha: $fecha</p>
             <p>Hora: $hora</p>
-            <p>Socio: $num_socio $nombre $apellidos</p>
+            <p>Número del socio: $num_socio</p>
+            <p>Nombre: $nombre $apellidos</p>
           </div>
           <h2>Descripción:</h2>
           <div>
@@ -175,12 +183,13 @@ class EntregaController {
         $mail->AltBody = "
           TICKET DE ENTREGA
 
+          Datos del ticket:
             Fecha: $fecha
             Hora: $hora
-            Socio: $num_socio $nombre $apellidos
+            Número del socio: $num_socio
+            Nombre: $nombre $apellidos
           
-          DESCRIPCIÓN:
-
+          Descripción:
             Producto: Espárragos UT$zona
             Peso bruto (kg): $bruto
             Tara (kg): $tara
