@@ -7,6 +7,7 @@ use controllers\ErrorController;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use Dompdf\Dompdf;
 
 class EntregaController {
   private EntregaService $service;
@@ -122,7 +123,7 @@ class EntregaController {
 
       if ($realizada) {
         $this -> enviar_ticket($tara, $bruto, $neto, $fecha, $hora, $id_plantacion);
-        header("Location:".base_url."/Entrega/nueva");
+        // header("Location:".base_url."/Entrega/nueva");
       }
     }
   }
@@ -137,8 +138,29 @@ class EntregaController {
     $nombre = $socio -> getNombre();
     $apellidos = $socio -> getApellidos();
     $id_entrega = $this -> get_ultima_entrega() -> getIdEntrega();
-
+    $cuerpo = "
+    <h1>Ticket de entrega</h1>
+    <h2>Datos del ticket:</h2>
+    <div>
+      <p>Número: $id_entrega</p>
+      <p>Fecha: $fecha</p>
+      <p>Hora: $hora</p>
+      <p>Número del socio: $num_socio</p>
+      <p>Nombre: $nombre $apellidos</p>
+    </div>
+    <h2>Descripción:</h2>
+    <div>
+      <p>Producto: Espárragos UT$zona</p>
+      <p>Peso bruto (kg): $bruto</p>
+      <p>Tara (kg): $tara</p>
+      <p>Peso neto (kg): $neto</p>
+    </div>
+    <br>
+    <p>En Huétor-Tájar a $fecha</p>
+    ";
     require 'vendor/autoload.php';
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($cuerpo);
     $mail = new PHPMailer(true);
 
     try {
@@ -157,29 +179,12 @@ class EntregaController {
         $mail->setFrom('basculacosafra@gmail.com');  
         $mail->addAddress($socio -> getCorreo());
 
+        $mail->addAttachment($dompdf->render(), "ticket_$id_entrega.pdf");    //Optional name
+
         //Content
         $mail->isHTML(true);                                
         $mail->Subject = "Ticket $id_entrega. Plantacion $id_plantacion";
-        $mail->Body    = "
-          <h1>Ticket de entrega</h1>
-          <h2>Datos del ticket:</h2>
-          <div>
-            <p>Número: $id_entrega</p>
-            <p>Fecha: $fecha</p>
-            <p>Hora: $hora</p>
-            <p>Número del socio: $num_socio</p>
-            <p>Nombre: $nombre $apellidos</p>
-          </div>
-          <h2>Descripción:</h2>
-          <div>
-            <p>Producto: Espárragos UT$zona</p>
-            <p>Peso bruto (kg): $bruto</p>
-            <p>Tara (kg): $tara</p>
-            <p>Peso neto (kg): $neto</p>
-          </div>
-          <br>
-          <p>En Huétor-Tájar a $fecha</p>
-        ";
+        $mail->Body    = $cuerpo;
         $mail->AltBody = "
           TICKET DE ENTREGA
 
