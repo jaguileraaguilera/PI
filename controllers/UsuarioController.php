@@ -1,6 +1,7 @@
 <?php
 namespace controllers;
 use services\UsuarioService;
+use lib\Paginador;
 use controllers\ErrorController;
 
 class UsuarioController {
@@ -65,7 +66,9 @@ class UsuarioController {
   }
 
   public function listar() {
-    $array_objetos = $this -> extraer_todos();
+    $pagina = (int) $_GET['pagina'];
+    $paginador = new Paginador($this -> service -> listar(), 15);
+    $array_objetos = $paginador -> particiones;
     require_once 'views/usuario/ver_todos.php';
     return $array_objetos;
   }

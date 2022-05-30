@@ -17,7 +17,7 @@
         <?php require_once 'views/navlist/item/close.php'?>
     </a>
 
-    <a href="<?=base_url?>/Usuario/listar" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+    <a href="<?=base_url?>/Usuario/listar&pagina=1" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
         <?php require_once 'views/navlist/item/open.php'?>    
             Ver todos
         <?php require_once 'views/navlist/item/close.php'?>
