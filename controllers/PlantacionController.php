@@ -1,5 +1,6 @@
 <?php
 namespace controllers;
+use lib\Paginador;
 use services\PlantacionService;
 use controllers\UsuarioController;
 use controllers\ErrorController;
@@ -21,7 +22,9 @@ class PlantacionController {
   }
 
   public function listar() {
-    $array_objetos = $this -> extraer_todas();
+    $pagina = (int) $_GET['pagina'];
+    $paginador = new Paginador($this -> service -> listar(), 15);
+    $array_objetos = $paginador -> particiones;
     require_once 'views/plantacion/ver_todas.php';
     return $array_objetos;
   }
