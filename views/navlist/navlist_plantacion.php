@@ -5,7 +5,7 @@
 
 <div class="list-group w-auto">
     <?php if ($_SESSION['rol'] == 0):?>
-        <a href="<?=base_url?>/Plantacion/mis_plantaciones" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+        <a href="<?=base_url?>/Plantacion/mis_plantaciones&pagina=1" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
             <?php require_once 'views/navlist/item/open.php'?>
                 Ver mis plantaciones
             <?php require_once 'views/navlist/item/close.php'?>

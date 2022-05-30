@@ -49,7 +49,9 @@ class PlantacionController {
   public function mis_plantaciones() {
     session_start();
     if (isset($_SESSION['correo'])) {
-      $array_objetos = $this -> service -> datos_plantacion($_SESSION['correo']);
+      $pagina = (int) $_GET['pagina'];
+      $paginador = new Paginador($this -> service -> datos_plantacion($_SESSION['correo']), 15);
+      $array_objetos = $paginador -> particiones;
       require_once 'views/plantacion/mis_plantaciones.php';
       return $array_objetos;
     }

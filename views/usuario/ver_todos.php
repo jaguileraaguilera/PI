@@ -9,8 +9,8 @@
     <?php require_once 'views/tables/open.php'; ?>
         <?php foreach($array_objetos[$pagina - 1] as $objeto): ?>
             <tr>
+                <?php require 'views/tables/tabular_objeto.php'; ?>
                 <?php if ($objeto -> getActual() == 1): ?>
-                    <?php require 'views/tables/tabular_objeto.php'; ?>
                     <td>
                         <form action="<?=htmlspecialchars(base_url."/Usuario/ver_form_modificar")?>" method="POST">
                             <?php require 'views/input/id_usuario.php'; ?>
