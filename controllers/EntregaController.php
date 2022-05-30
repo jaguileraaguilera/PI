@@ -35,7 +35,9 @@ class EntregaController {
   public function mis_entregas() {
     session_start();
     if (isset($_SESSION['correo'])) {
-      $array_objetos = $this -> service -> datos_entregas_correo($_SESSION['correo']);
+      $pagina = (int) $_GET['pagina'];
+      $paginador = new Paginador($this -> service -> datos_entregas_correo($_SESSION['correo']), 15);
+      $array_objetos = $paginador -> particiones;
       require_once 'views/entrega/mis_entregas.php';
       return $array_objetos;
     }
