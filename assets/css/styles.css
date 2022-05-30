@@ -38,6 +38,25 @@ main {
     font-size: large;
 }
 
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-item.active .page-link {
+z-index: 3;
+color: #fff;
+background-color: #198754;
+border-color: #198754;
+}
+
+.page-link {
+    color: #198754;
+}
+
 a {
     color: #198754;
 }

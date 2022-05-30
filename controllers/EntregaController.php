@@ -3,6 +3,7 @@ namespace controllers;
 use services\EntregaService;
 use controllers\PlantacionController;
 use controllers\UsuarioController;
+use lib\Paginador;
 use controllers\ErrorController;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -24,7 +25,9 @@ class EntregaController {
   }
 
   public function listar() {
-    $array_objetos = $this -> service -> listar();
+    $pagina = (int) $_GET['pagina'];
+    $paginador = new Paginador($this -> service -> listar(), 3);
+    $array_objetos = $paginador -> particiones;
     require_once 'views/entrega/ver_todas.php';
     return $array_objetos;
   }
@@ -122,7 +125,7 @@ class EntregaController {
 
       if ($realizada) {
         $this -> enviar_ticket($tara, $bruto, $neto, $fecha, $hora, $id_plantacion);
-        // header("Location:".base_url."/Entrega/nueva");
+        header("Location:".base_url."/Entrega/nueva");
       }
     }
   }

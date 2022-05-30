@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
-ErrorDocument 404 http://localhost/ejercicios/proyecto_poo_clinica_mio/error/index
+ErrorDocument 404 http://localhost/ejercicios/proyecto_cosafra/error/index
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 ReWriteCond %{SCRIPT_FILENAME} !-f
