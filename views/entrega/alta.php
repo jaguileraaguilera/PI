@@ -9,18 +9,28 @@
 
 <section class="form">
     <form action="<?=htmlspecialchars(base_url."/Entrega/alta")?>" method="POST">
-        <?php foreach ($objeto as $atributo => $valor) : ?>
-            <div class="mb-3">
-                <?php if (in_array($atributo, ['bruto', 'tara', 'id_plantacion'])): ?>
-                    <?php require 'views/label/formateada.php'; ?>
-                    <?php if ($atributo == 'id_plantacion'): ?>
-                        <?php require 'views/input/id_plantacion_select.php'; ?>
-                    <?php else: ?>
-                        <?php require 'views/input/tara_bruto.php'; ?>
+
+        <div class="mb-3">
+            <label for="bruto" class="form-label">Bruto</label>
+            <input type="number" class="form-control" id="bruto" name="bruto" min="0" step="0.5" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="tara" class="form-label">Tara</label>
+            <input type="number" class="form-control" id="tara" name="tara" min="0" step="0.5" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="id_plantacion" class="form-label">ID Plantacion</label>
+            <select class="form-select" id="id_plantacion" name="id_plantacion" required>
+                <?php foreach ($plantaciones as $plantacion): ?>
+                    <?php if ($plantacion -> getActual() == 1): ?>
+                        <option value="<?=$plantacion -> getIdPlantacion()?>"><?=$plantacion -> getIdPlantacion()?></option>
                     <?php endif; ?>
-                <?php endif; ?>
-            </div>
-        <?php endforeach; ?>
+                <?php endforeach; ?> 
+            </select>
+        </div>
+
         <?php require 'views/btn/alta.php'; ?>
     </form>
 </section>

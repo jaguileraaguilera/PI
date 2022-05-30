@@ -26,7 +26,7 @@ class EntregaController {
 
   public function listar() {
     $pagina = (int) $_GET['pagina'];
-    $paginador = new Paginador($this -> service -> listar(), 3);
+    $paginador = new Paginador($this -> service -> listar(), 15);
     $array_objetos = $paginador -> particiones;
     require_once 'views/entrega/ver_todas.php';
     return $array_objetos;
@@ -46,10 +46,7 @@ class EntregaController {
     if (isset($_SESSION['correo'])) {
       $plantacionController = new PlantacionController();
       $plantaciones = $plantacionController -> extraer_todas();
-      $array_objetos = $this -> service -> listar();
-      $objeto = $array_objetos[0];
       require_once 'views/entrega/alta.php';
-      return $objeto;
     }
   }
 
@@ -59,7 +56,7 @@ class EntregaController {
 
   public function borrar() {
     $this -> service -> borrar($_POST['id_entrega']);
-    header("Location:".base_url."/Entrega/listar");
+    header("Location:".base_url."/Entrega/listar&pagina=1");
   }
 
   public function ver_form_modificar() {
