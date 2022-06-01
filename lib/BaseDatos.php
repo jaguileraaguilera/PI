@@ -44,12 +44,4 @@ class BaseDatos {
   public function extraer_todos(): array {
     return $this->resultado->fetchAll(PDO::FETCH_ASSOC);
   }
-
-  // public function filasAfectadas(): int {
-  //   return $this->resultado->rowCount();
-  // }
-
-  // public function ultimoIdInsertado(): int {
-  //   return $this->conexion->lastInsertId;
-  // }
 }

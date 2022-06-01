@@ -1,76 +1,36 @@
-INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
-    '12345678A',
-    'José',
-    'Molina Álvarez',
-    'C/ Gran Capitán nº 5 1ºA',
-    'Huétor-Tájar',
-    '123456789',
-    'jose@gmail.com',
-    '123456',
+-- Consejos: Crear un socio con un correo real en el que verificar que llegan los correos con los tickets.
+-- Crear una plantacion nueva y asignarsela a éste para poder hacer las entregas
+
+INSERT INTO usuario (dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
+    '87654321Z',
+    'Francisco',
+    'Pérez Gálvez',
+    'C/ Río nº 1',
+    'Villaconejos',
+    '654987321',
+    'paco@gmail.com',
+    '$2y$10$Z0JYPSkFryuhUJ78W1TM4OMvncuuiXy02P7EcuDif6zqFRv74uDHS', -- Hash para 258369
     2,
     1
 );
 
-INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
-    '87654321B',
-    'Juan',
-    'Pérez López',
-    'C/ Real nº 3',
-    'Huétor-Tájar',
-    '987654321',
-    'juan@gmail.com',
-    '654321',
-    1,
-    1
-);
-
-INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
-    '98741236B',
-    'Luis',
-    'Cruz Martín',
-    'C/ Ancha nº 30 3ºB',
-    'Huétor-Tájar',
-    '987412365',
-    'luis@gmail.com',
-    '987654',
+INSERT INTO usuario (dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
+    '87654321Z',
+    'Javier',
+    'Aguilera Aguilera',
+    'C/ Baja nº 0',
+    'Villaliebres',
+    '123456789',
+    'javieraguilerayaguilera@gmail.com', -- Cuidado con las pruebas que llegan a mi correo
+    '$2y$10$eomIc5bZKR9EvsvdNWzrMeP.mQCoW.DTMyfgftyb1fOAs5J3q3U6C', -- Hash para 123456789
     0,
     1
 );
 
-
 INSERT INTO plantacion (variedad, anio, zona, id_usuario, actual) VALUES(
-    'Placoset',
+    ' Placosesp',
     '2008',
     1,
-    3,
-    1
-);
-
-INSERT INTO plantacion (variedad, anio, zona, id_usuario, actual) VALUES(
-    'Vegalim',
-    '2015',
     2,
-    3,
-    1
-);
-
-
-INSERT INTO entrega (fecha, hora, tara, bruto, neto, id_plantacion, actual) VALUES (
-    '2022-03-17',
-    '11:05:34',
-    30.5,
-    140.5,
-    110,
-    1,
-    1
-);
-
-INSERT INTO entrega (fecha, hora, tara, bruto, neto, id_plantacion, actual) VALUES (
-    '2022-03-18',
-    '11:23:34',
-    30.5,
-    120.5,
-    90,
-    1,
     1
 );

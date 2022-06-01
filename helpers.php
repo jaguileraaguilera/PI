@@ -35,9 +35,3 @@ function comprobar_sesion() {
         session_start();
     }
 }
-
-// function limpiar_errores() {
-//     if (isset($_SESSION['errores'])) {
-//         $_SESSION['errores'] = array();
-//     }
-// }
