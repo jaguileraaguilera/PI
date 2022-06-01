@@ -25,7 +25,12 @@ class EntregaController {
   }
 
   public function listar() {
-    $pagina = (int) $_GET['pagina'];
+    if (isset($_GET['pagina'])){
+      $pagina = (int) $_GET['pagina'];
+    }
+    else {
+      $pagina = 1;
+    }
     $paginador = new Paginador($this -> service -> listar(), 15);
     $array_objetos = $paginador -> particiones;
     require_once 'views/entrega/ver_todas.php';
