@@ -172,18 +172,18 @@ class EntregaController {
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                    
         $mail->isSMTP();                                            
-        $mail->Host       = 'smtp.gmail.com';                    
+        $mail->Host       = 'smtp.mail.yahoo.com';                    
         $mail->SMTPAuth   = true;                                   
-        $mail->Username   = 'basculacosafra@gmail.com';                     
-        $mail->Password   = 'bascula10@cosafra.com';                               
+        $mail->Username   = 'basculacosafra@yahoo.com';                     
+        $mail->Password   = 'cpnsgphjqdegazbm';                               
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;           
         $mail->Port       = 465;
         $mail->SMTPDebug  = 0;                                    
 
         //Recipients
-        $mail->setFrom('basculacosafra@gmail.com');  
+        $mail->setFrom('basculacosafra@yahoo.com');  
         $mail->addAddress($socio -> getCorreo());
-        $mail->addAddress('basculacosafra@gmail.com');
+        $mail->addAddress('basculacosafra@yahoo.com');
 
         //Content
         $mail->isHTML(true);                                
