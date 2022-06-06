@@ -3,11 +3,19 @@ namespace lib;
 use PDO;
 use PDOException;
 
+/**
+ * BaseDatos
+ */
 class BaseDatos {
   
   private PDO $conexion;
   private mixed $resultado;
-  
+    
+  /**
+   * __construct
+   *
+   * @return void
+   */
   function __construct(
     private string $servidor = SERVIDOR,
     private string $usuario = USUARIO,
@@ -16,7 +24,12 @@ class BaseDatos {
   ) {
     $this->conexion = $this->conectar();
   }
-  
+    
+  /**
+   * conectar
+   *
+   * @return PDO
+   */
   private function conectar(): PDO {
     try {
         $opciones = array(
@@ -31,16 +44,32 @@ class BaseDatos {
         exit;
     }
   }
-  
+    
+  /**
+   * consulta
+   *
+   * @param  mixed $consultaSQL
+   * @return void
+   */
   public function consulta(string $consultaSQL): void {
       $this->resultado = $this->conexion->query($consultaSQL);
   }
-
+  
+  /**
+   * extraer_registro
+   *
+   * @return mixed
+   */
   public function extraer_registro(): mixed {
     return ($fila = $this->resultado->fetch(PDO::FETCH_ASSOC )) ? $fila:false;
     
   }
-
+  
+  /**
+   * extraer_todos
+   *
+   * @return array
+   */
   public function extraer_todos(): array {
     return $this->resultado->fetchAll(PDO::FETCH_ASSOC);
   }

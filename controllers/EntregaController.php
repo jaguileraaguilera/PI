@@ -199,7 +199,7 @@ class EntregaController {
    * @param  mixed $id_plantacion
    * @return void
    */
-  public function enviar_ticket(float $tara, float $bruto, float $neto, string $fecha, string $hora, int $id_plantacion) {
+  public function enviar_ticket(float $tara, float $bruto, float $neto, string $fecha, string $hora, string $id_plantacion) {
     $usuarioController = new UsuarioController();
     $socio = $usuarioController -> getUsuarioFromPlantacion((int) $id_plantacion);
     $plantacionController = new PlantacionController();
