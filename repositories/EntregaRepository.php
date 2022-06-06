@@ -1,27 +1,50 @@
 <?php
-
 namespace repositories;
 use lib\BaseDatos;
 use models\Entrega;
 
+/**
+ * EntregaRepository
+ */
 class EntregaRepository {
     private BaseDatos $conexion;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     function __construct() {
         $this -> conexion = new BaseDatos();
     }
-    
+        
+    /**
+     * extraer_registro
+     *
+     * @return Entrega
+     */
     private function extraer_registro(): ?Entrega {
         return ($entrega = $this -> conexion -> extraer_registro()) ? 
             Entrega::fromArray($entrega) : null;
     }
-
-    public function listar() {
+    
+    /**
+     * listar
+     *
+     * @return array
+     */
+    public function listar(): array {
         $this -> conexion -> consulta("SELECT * FROM entrega;");
         return $this -> extraer_todos();
     }
-
-    public function datos_entrega($id_entrega) {
+     
+    /**
+     * datos_entrega
+     *
+     * @param  mixed $id_entrega
+     * @return Entrega
+     */
+    public function datos_entrega(int $id_entrega) :?Entrega {
         $this -> conexion -> consulta(
             "SELECT * 
             FROM entrega
@@ -30,8 +53,14 @@ class EntregaRepository {
 
         return $this -> extraer_registro();
     }
-
-    public function datos_entregas_correo($correo) {
+    
+    /**
+     * datos_entregas_correo
+     *
+     * @param  mixed $correo
+     * @return array
+     */
+    public function datos_entregas_correo(string $correo): array {
         $this -> conexion -> consulta(
             "SELECT entrega.* 
             FROM plantacion, usuario, entrega 
@@ -41,15 +70,28 @@ class EntregaRepository {
         );
         return $this -> extraer_todos();
     }
-
-    public function borrar($id_entrega) {
+    
+    /**
+     * borrar
+     *
+     * @param  mixed $id_entrega
+     * @return void
+     */
+    public function borrar(int $id_entrega): void {
         $this -> conexion -> consulta(
             "DELETE FROM entrega
             WHERE id_entrega = '{$id_entrega}';"
         );
     }
-
-    public function modificar($id_entrega, $parametros) {
+    
+    /**
+     * modificar
+     *
+     * @param  mixed $id_entrega
+     * @param  mixed $parametros
+     * @return void
+     */
+    public function modificar(int $id_entrega, array $parametros): void {
         foreach ($parametros as $atributo => $valor) {
             $this -> conexion -> consulta (
                 "UPDATE entrega 
@@ -59,8 +101,19 @@ class EntregaRepository {
             );
         }
     }
-
-    public function alta($tara, $bruto, $neto, $fecha, $hora, $id_plantacion) {
+    
+    /**
+     * alta
+     *
+     * @param  mixed $tara
+     * @param  mixed $bruto
+     * @param  mixed $neto
+     * @param  mixed $fecha
+     * @param  mixed $hora
+     * @param  mixed $id_plantacion
+     * @return int
+     */
+    public function alta(float $tara, float $bruto, float $neto, string $fecha, string $hora, int $id_plantacion): int {
         $this -> conexion -> consulta(
             "INSERT INTO entrega(fecha, hora, tara, bruto, neto, id_plantacion, actual) VALUES (
                 '{$fecha}',
@@ -75,8 +128,13 @@ class EntregaRepository {
 
         return 1;
     }
-
-    public function get_ultima_entrega() {
+    
+    /**
+     * get_ultima_entrega
+     *
+     * @return Entrega
+     */
+    public function get_ultima_entrega(): ?Entrega {
         $this -> conexion -> consulta(
             "SELECT * 
             FROM entrega 
@@ -87,8 +145,13 @@ class EntregaRepository {
         );
         return $this -> extraer_registro();
     }
-
-    public function extraer_todos() {
+    
+    /**
+     * extraer_todos
+     *
+     * @return array
+     */
+    public function extraer_todos(): array {
         $entregas = array();
         $entregasData = $this -> conexion -> extraer_todos();
 

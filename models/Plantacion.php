@@ -1,6 +1,9 @@
 <?php
 namespace models;
 
+/**
+ * Plantacion
+ */
 class Plantacion {        
         /**
          * __construct
@@ -31,7 +34,7 @@ class Plantacion {
          * @param  mixed $id_plantacion
          * @return self
          */
-        public function setIdPlantacion($id_plantacion): self{
+        public function setIdPlantacion(int $id_plantacion): self{
                 $this->id_plantacion = $id_plantacion;
                 return $this;
         }
@@ -51,7 +54,7 @@ class Plantacion {
          * @param  mixed $variedad
          * @return self
          */
-        public function setVariedad($variedad): self {
+        public function setVariedad(string $variedad): self {
                 $this->variedad = $variedad;
                 return $this;
         }
@@ -71,7 +74,7 @@ class Plantacion {
          * @param  mixed $anio
          * @return self
          */
-        public function setAnio($anio): self {
+        public function setAnio(int $anio): self {
                 $this->anio = $anio;
                 return $this;
         }
@@ -91,7 +94,7 @@ class Plantacion {
          * @param  mixed $zona
          * @return self
          */
-        public function setZona($zona): self {
+        public function setZona(int $zona): self {
                 $this->zona = $zona;
                 return $this;
         }
@@ -111,7 +114,7 @@ class Plantacion {
          * @param  mixed $id_usuario
          * @return self
          */
-        public function setIdUsuario($id_usuario): self {
+        public function setIdUsuario(int $id_usuario): self {
                 $this->id_usuario = $id_usuario;
                 return $this;
         }
@@ -131,7 +134,7 @@ class Plantacion {
          * @param  mixed $actual
          * @return self
          */
-        public function setActual($actual): self {
+        public function setActual(int $actual): self {
                 $this->actual = $actual;
                 return $this;
         }

@@ -1,6 +1,9 @@
 <?php
 namespace models;
 
+/**
+ * Entrega
+ */
 class Entrega {    
     /**
      * __construct

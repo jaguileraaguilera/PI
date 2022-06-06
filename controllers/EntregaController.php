@@ -1,5 +1,6 @@
 <?php
 namespace controllers;
+use models\Entrega;
 use services\EntregaService;
 use controllers\PlantacionController;
 use controllers\UsuarioController;
@@ -9,13 +10,26 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+/**
+ * EntregaController
+ */
 class EntregaController {
   private EntregaService $service;
-
+  
+  /**
+   * __construct
+   *
+   * @return void
+   */
   function __construct() {
     $this -> service = new EntregaService();
   }
-
+  
+  /**
+   * opciones_entrega
+   *
+   * @return void
+   */
   public function opciones_entrega() {
     if (session_status() != 2) { //Si la sesión no está iniciada
       session_start();  
@@ -23,8 +37,13 @@ class EntregaController {
     require_once 'views/topbar.php';
     require_once 'views/navlist/navlist_entrega.php';
   }
-
-  public function listar() {
+  
+  /**
+   * listar
+   *
+   * @return array
+   */
+  public function listar() :array{
     if (isset($_GET['pagina'])){
       $pagina = (int) $_GET['pagina'];
     }
@@ -36,8 +55,13 @@ class EntregaController {
     require_once 'views/entrega/ver_todas.php';
     return $array_objetos;
   }
-
-  public function mis_entregas() {
+  
+  /**
+   * mis_entregas
+   *
+   * @return array
+   */
+  public function mis_entregas(): array {
     session_start();
     if (isset($_SESSION['correo'])) {
       $pagina = (int) $_GET['pagina'];
@@ -47,7 +71,12 @@ class EntregaController {
       return $array_objetos;
     }
   }
-
+  
+  /**
+   * nueva
+   *
+   * @return void
+   */
   public function nueva() {
     session_start();
     if (isset($_SESSION['correo'])) {
@@ -56,24 +85,44 @@ class EntregaController {
       require_once 'views/entrega/alta.php';
     }
   }
-
-  public function get_ultima_entrega() {
+  
+  /**
+   * get_ultima_entrega
+   *
+   * @return Entrega
+   */
+  public function get_ultima_entrega(): ?Entrega {
     return $this -> service -> get_ultima_entrega();
   }
-
+  
+  /**
+   * borrar
+   *
+   * @return void
+   */
   public function borrar() {
     $this -> service -> borrar($_POST['id_entrega']);
     header("Location:".base_url."/Entrega/listar&pagina=1");
   }
-
-  public function ver_form_modificar() {
+  
+  /**
+   * ver_form_modificar
+   *
+   * @return Entrega
+   */
+  public function ver_form_modificar() :Entrega {
     $plantacionController = new PlantacionController();
     $plantaciones = $plantacionController -> extraer_todas();
     $objeto = $this -> service -> datos_entrega($_POST['id_entrega']);
     require_once 'views/entrega/modificar.php';
     return $objeto;
   }
-
+  
+  /**
+   * modificar
+   *
+   * @return void
+   */
   public function modificar() {
     $id_entrega = (int) $_POST['id_entrega'];
 
@@ -107,7 +156,12 @@ class EntregaController {
       header("Location:".base_url."/Entrega/listar");
     }
   }
-
+  
+  /**
+   * alta
+   *
+   * @return void
+   */
   public function alta() {
     if (isset($_POST['tara']) && !empty($_POST['tara'])) {
       $tara = filter_var( $_POST['tara'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
@@ -133,8 +187,19 @@ class EntregaController {
       }
     }
   }
-
-  public function enviar_ticket($tara, $bruto, $neto, $fecha, $hora, $id_plantacion) {
+  
+  /**
+   * enviar_ticket
+   *
+   * @param  mixed $tara
+   * @param  mixed $bruto
+   * @param  mixed $neto
+   * @param  mixed $fecha
+   * @param  mixed $hora
+   * @param  mixed $id_plantacion
+   * @return void
+   */
+  public function enviar_ticket(float $tara, float $bruto, float $neto, string $fecha, string $hora, int $id_plantacion) {
     $usuarioController = new UsuarioController();
     $socio = $usuarioController -> getUsuarioFromPlantacion((int) $id_plantacion);
     $plantacionController = new PlantacionController();

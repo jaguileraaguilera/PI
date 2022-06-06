@@ -1,6 +1,9 @@
 <?php
 namespace models;
 
+/**
+ * Usuario
+ */
 class Usuario {        
         /**
          * __construct
@@ -36,7 +39,7 @@ class Usuario {
          * @param  mixed $dni
          * @return self
          */
-        public function setDni($dni): self {
+        public function setDni(string $dni): self {
                 $this->dni = $dni;
 
                 return $this;
@@ -57,7 +60,7 @@ class Usuario {
          * @param  mixed $nombre
          * @return self
          */
-        public function setNombre($nombre): self {
+        public function setNombre(string $nombre): self {
                 $this->nombre = $nombre;
                 return $this;
         }
@@ -77,7 +80,7 @@ class Usuario {
          * @param  mixed $apellidos
          * @return self
          */
-        public function setApellidos($apellidos): self {
+        public function setApellidos(string $apellidos): self {
                 $this->apellidos = $apellidos;
                 return $this;
         }
@@ -97,7 +100,7 @@ class Usuario {
          * @param  mixed $correo
          * @return self
          */
-        public function setCorreo($correo): self {
+        public function setCorreo(string $correo): self {
                 $this->correo = $correo;
                 return $this;
         }
@@ -117,7 +120,7 @@ class Usuario {
          * @param  mixed $password
          * @return self
          */
-        public function setPassword($password): self {
+        public function setPassword(string $password): self {
                 $this->password = $password;
                 return $this;
         }
@@ -137,7 +140,7 @@ class Usuario {
          * @param  mixed $rol
          * @return self
          */
-        public function setRol($rol): self {
+        public function setRol(int $rol): self {
                 $this->rol = $rol;
                 return $this;
         }
@@ -157,7 +160,7 @@ class Usuario {
          * @param  mixed $localidad
          * @return self
          */
-        public function setLocalidad($localidad): self {
+        public function setLocalidad(string $localidad): self {
                 $this->localidad = $localidad;
                 return $this;
         }
@@ -177,7 +180,7 @@ class Usuario {
          * @param  mixed $telefono
          * @return self
          */
-        public function setTelefono($telefono): self {
+        public function setTelefono(string $telefono): self {
                 $this->telefono = $telefono;
                 return $this;
         }
@@ -197,7 +200,7 @@ class Usuario {
          * @param  mixed $id_usuario
          * @return self
          */
-        public function setIdUsuario($id_usuario): self {
+        public function setIdUsuario(int $id_usuario): self {
                 $this->id_usuario = $id_usuario;
                 return $this;
         }
@@ -217,7 +220,7 @@ class Usuario {
          * @param  mixed $direccion
          * @return self
          */
-        public function setDireccion($direccion): self {
+        public function setDireccion(string $direccion): self {
                 $this->direccion = $direccion;
                 return $this;
         }
@@ -237,7 +240,7 @@ class Usuario {
          * @param  mixed $actual
          * @return self
          */
-        public function setActual($actual): self {
+        public function setActual(int $actual): self {
                 $this->actual = $actual;
                 return $this;
         }
