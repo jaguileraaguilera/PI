@@ -1,56 +1,103 @@
 <?php
-
 namespace repositories;
 use lib\BaseDatos;
 use models\Usuario;
 
+/**
+ * UsuarioRepository
+ */
 class UsuarioRepository {
     private BaseDatos $conexion;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     function __construct() {
         $this -> conexion = new BaseDatos();
     }
-    
+        
+    /**
+     * extraer_registro
+     *
+     * @return Usuario
+     */
     private function extraer_registro(): ?Usuario {
         return ($usuario = $this -> conexion -> extraer_registro()) ? 
             Usuario::fromArray($usuario) : null;
     }
-
-    public function inicia_sesion($correo, $password) {
+    
+    /**
+     * inicia_sesion
+     *
+     * @param  mixed $correo
+     * @param  mixed $password
+     * @return Usuario
+     */
+    public function inicia_sesion(string $correo, string $password): ?Usuario {
         $this -> conexion -> consulta(
             "SELECT * FROM usuario WHERE 
             correo='{$correo}' AND password='{$password}';");
         return $this -> extraer_registro();
     }
-
-    public function listar() {
+    
+    /**
+     * listar
+     *
+     * @return array
+     */
+    public function listar(): array {
         $this -> conexion -> consulta("SELECT * FROM usuario;");
         return $this -> extraer_todos();
     }
-
-    public function borrar($id_usuario) {
+    
+    /**
+     * borrar
+     *
+     * @param  mixed $id_usuario
+     * @return void
+     */
+    public function borrar(int $id_usuario) {
         $this -> conexion -> consulta(
             "UPDATE usuario set actual = 0 WHERE id_usuario ='{$id_usuario}';"
         );
     }
-
-    public function datos_usuario($id_usuario) {
+    
+    /**
+     * datos_usuario
+     *
+     * @param  mixed $id_usuario
+     * @return Usuario
+     */
+    public function datos_usuario(int $id_usuario): ?Usuario {
         $this -> conexion -> consulta(
             "SELECT * FROM usuario WHERE id_usuario='{$id_usuario}';"
         );
 
         return $this -> extraer_registro();
     }
-
-    public function datos_usuario_correo($correo) {
+    
+    /**
+     * datos_usuario_correo
+     *
+     * @param  mixed $correo
+     * @return Usuario
+     */
+    public function datos_usuario_correo(string $correo): ?Usuario {
         $this -> conexion -> consulta(
             "SELECT * FROM usuario WHERE correo='{$correo}';"
         );
 
         return $this -> extraer_registro();
     }
-
-    public function extraer_todos() {
+    
+    /**
+     * extraer_todos
+     *
+     * @return array
+     */
+    public function extraer_todos(): array {
         $usuarios = array();
         $usuariosData = $this -> conexion -> extraer_todos();
 
@@ -60,8 +107,17 @@ class UsuarioRepository {
 
         return $usuarios;
     }
-
-    public function alta($campos_validados, $correo, $password, $rol) {
+    
+    /**
+     * alta
+     *
+     * @param  mixed $campos_validados
+     * @param  mixed $correo
+     * @param  mixed $password
+     * @param  mixed $rol
+     * @return void
+     */
+    public function alta(array $campos_validados, string $correo, string $password, int $rol) {
         $this -> conexion -> consulta(
             "INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
                 '{$campos_validados[0]}',
@@ -77,8 +133,15 @@ class UsuarioRepository {
             );"
         );
     }
-
-    public function modificar($id_usuario, $parametros) {
+    
+    /**
+     * modificar
+     *
+     * @param  mixed $id_usuario
+     * @param  mixed $parametros
+     * @return void
+     */
+    public function modificar(int $id_usuario, array $parametros) {
         foreach ($parametros as $atributo => $valor) {
             $this -> conexion -> consulta (
                 "UPDATE usuario
@@ -88,8 +151,14 @@ class UsuarioRepository {
             );
         }
     }
-
-    public function getUsuarioFromPlantacion($id_plantacion) {
+    
+    /**
+     * getUsuarioFromPlantacion
+     *
+     * @param  mixed $id_plantacion
+     * @return Usuario
+     */
+    public function getUsuarioFromPlantacion(int $id_plantacion): ?Usuario {
         $this -> conexion -> consulta(
             "SELECT usuario.* 
             FROM usuario, plantacion 
