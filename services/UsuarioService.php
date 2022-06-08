@@ -23,9 +23,9 @@ class UsuarioService {
      *
      * @param  mixed $correo
      * @param  mixed $password
-     * @return void
+     * @return Usuario
      */
-    public function inicia_sesion(string $correo, string $password) {
+    public function inicia_sesion(string $correo, string $password): ?Usuario {
         return $this -> repository -> inicia_sesion($correo, $password);
     }
     

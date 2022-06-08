@@ -6,7 +6,7 @@
     use controllers\FrontController;
 ?>
 
-<?php require_once 'views/header.php';?>
+<?php require_once 'views/header.php'; ?>
 
 <?php if (!empty($_GET['controller'])): ?>
     <?php FrontController::main() ?>

@@ -213,21 +213,21 @@ class EntregaController {
     <h1>Ticket de entrega</h1>
     <h2>Datos del ticket:</h2>
     <div>
-      <p>Número: $id_entrega</p>
+      <p>N&uacute;mero: $id_entrega</p>
       <p>Fecha: $fecha</p>
       <p>Hora: $hora</p>
-      <p>Número del socio: $num_socio</p>
+      <p>N&uacute;mero del socio: $num_socio</p>
       <p>Nombre: $nombre $apellidos</p>
     </div>
-    <h2>Descripción:</h2>
+    <h2>Descripci&oacute;n:</h2>
     <div>
-      <p>Producto: Espárragos UT$zona</p>
+      <p>Producto: Esp&aacute;rragos UT$zona</p>
       <p>Peso bruto (kg): $bruto</p>
       <p>Tara (kg): $tara</p>
       <p>Peso neto (kg): $neto</p>
     </div>
     <br>
-    <p>En Huétor-Tájar a $fecha</p>
+    <p>En Hu&eacute;tor-T&aacute;jar a $fecha</p>
     ";
 
     require 'vendor/autoload.php';
