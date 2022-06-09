@@ -39,13 +39,13 @@ class PlantacionController {
   public function extraer_todas(): array {
     return $this -> service -> listar();
   }
-  
+    
   /**
    * listar
    *
-   * @return array
+   * @return void
    */
-  public function listar(): array {
+  public function listar(): void {
     if (isset($_GET['pagina'])){
       $pagina = (int) $_GET['pagina'];
     }
@@ -55,7 +55,6 @@ class PlantacionController {
     $paginador = new Paginador($this -> service -> listar(), 15);
     $array_objetos = $paginador -> particiones;
     require_once 'views/plantacion/ver_todas.php';
-    return $array_objetos;
   }
   
   /**

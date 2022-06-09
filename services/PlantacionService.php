@@ -17,7 +17,7 @@ class PlantacionService {
     function __construct() {
         $this -> repository = new PlantacionRepository();
     }
-    
+        
     /**
      * listar
      *

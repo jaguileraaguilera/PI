@@ -7,7 +7,12 @@ use controllers\ErrorController;
 
 class UsuarioController {
   private UsuarioService $service;
-
+  
+  /**
+   * __construct
+   *
+   * @return void
+   */
   function __construct() {
     $this -> service = new UsuarioService();
   }

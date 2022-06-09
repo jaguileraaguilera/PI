@@ -27,13 +27,13 @@ class PlantacionRepository {
         return ($plantacion = $this -> conexion -> extraer_registro()) ? 
             Plantacion::fromArray($plantacion) : null;
     }
-    
+        
     /**
      * listar
      *
-     * @return void
+     * @return array
      */
-    public function listar() {
+    public function listar() : array {
         $this -> conexion -> consulta("SELECT * FROM plantacion;");
         return $this -> extraer_todos();
     }
