@@ -43,7 +43,7 @@ class UsuarioController {
       }
     }
 
-    $objeto = $this -> service -> inicia_sesion($_SESSION['correo'], $_SESSION['password_cifrada']);
+    $objeto = $this -> service -> login($_SESSION['correo'], $_SESSION['password_cifrada']);
     if ($objeto) {
       $_SESSION['rol'] = $objeto -> getRol();
       $_SESSION['nombre'] = $objeto -> getNombre();

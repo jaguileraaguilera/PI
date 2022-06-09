@@ -17,16 +17,16 @@ class UsuarioService {
     function __construct() {
         $this -> repository = new UsuarioRepository();
     }
-    
+        
     /**
-     * inicia_sesion
+     * login
      *
      * @param  mixed $correo
      * @param  mixed $password
      * @return Usuario
      */
-    public function inicia_sesion(string $correo, string $password): ?Usuario {
-        return $this -> repository -> inicia_sesion($correo, $password);
+    public function login(string $correo, string $password): ?Usuario {
+        return $this -> repository -> login($correo, $password);
     }
     
     /**

@@ -27,15 +27,15 @@ class UsuarioRepository {
         return ($usuario = $this -> conexion -> extraer_registro()) ? 
             Usuario::fromArray($usuario) : null;
     }
-    
+        
     /**
-     * inicia_sesion
+     * login
      *
      * @param  mixed $correo
      * @param  mixed $password
      * @return Usuario
      */
-    public function inicia_sesion(string $correo, string $password): ?Usuario {
+    public function login(string $correo, string $password): ?Usuario {
         $this -> conexion -> consulta(
             "SELECT * FROM usuario WHERE 
             correo='{$correo}' AND password='{$password}';");
