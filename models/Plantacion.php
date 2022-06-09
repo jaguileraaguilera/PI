@@ -146,13 +146,6 @@ class Plantacion {
          * @return Plantacion
          */
         public static function fromArray(array $data) :Plantacion {
-                return new Plantacion (
-                        $data['id_plantacion'],
-                        $data['variedad'],
-                        $data['anio'],
-                        $data['zona'],
-                        $data['id_usuario'],
-                        $data['actual']
-                );
+                return new Plantacion (...$data);
         }
 }

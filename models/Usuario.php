@@ -252,18 +252,6 @@ class Usuario {
          * @return Usuario
          */
         public static function fromArray(array $data) :Usuario {
-                return new Usuario (
-                        $data['id_usuario'],
-                        $data['rol'],
-                        $data['dni'],
-                        $data['nombre'],
-                        $data['apellidos'],
-                        $data['correo'],
-                        $data['password'],
-                        $data['telefono'],
-                        $data['localidad'],
-                        $data['direccion'],
-                        $data['actual']
-                );
+                return new Usuario (...$data);
         }        
 }

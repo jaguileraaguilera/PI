@@ -188,15 +188,6 @@ class Entrega {
      * @return Entrega
      */
     public static function fromArray(array $data): Entrega {
-        return new Entrega (
-            $data['id_entrega'],
-            $data['fecha'],
-            $data['hora'],
-            $data['tara'],
-            $data['bruto'],
-            $data['neto'],
-            $data['id_plantacion'],
-            $data['actual']
-        );
+        return new Entrega (...$data);
     }
 }
