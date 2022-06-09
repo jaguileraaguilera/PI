@@ -44,7 +44,7 @@ class EntregaRepository {
      * @param  mixed $id_entrega
      * @return Entrega
      */
-    public function datos_entrega(int $id_entrega) :?Entrega {
+    public function datos_entrega(int $id_entrega): ?Entrega {
         $this -> conexion -> consulta(
             "SELECT * 
             FROM entrega
