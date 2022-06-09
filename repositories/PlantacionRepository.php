@@ -56,7 +56,7 @@ class PlantacionRepository {
      * @param  mixed $correo
      * @return array
      */
-    public function datos_plantacion(string $correo): ?array {
+    public function datos_plantaciones(string $correo): ?array {
         $this -> conexion -> consulta(
             "SELECT plantacion.* 
             FROM plantacion, usuario 

@@ -43,8 +43,8 @@ class PlantacionService {
      * @param  mixed $correo
      * @return array
      */
-    public function datos_plantacion(string $correo): array {
-        return $this -> repository -> datos_plantacion($correo);
+    public function datos_plantaciones(string $correo): array {
+        return $this -> repository -> datos_plantaciones($correo);
     }
     
     /**
@@ -66,8 +66,8 @@ class PlantacionService {
      * @param  mixed $id_usuario
      * @return void
      */
-    public function alta(string $variedad, string $anio, int $zona, int $id_usuario) {
-        return $this -> repository -> alta($variedad, $anio, $zona, $id_usuario);
+    public function alta(string $variedad, string $anio, int $zona, int $id_usuario): void {
+        $this -> repository -> alta($variedad, $anio, $zona, $id_usuario);
     }
     
     /**
@@ -77,7 +77,7 @@ class PlantacionService {
      * @param  mixed $parametros
      * @return void
      */
-    public function modificar(int $id_plantacion, array $parametros) {
-        return $this-> repository -> modificar($id_plantacion, $parametros);
+    public function modificar(int $id_plantacion, array $parametros): void {
+        $this-> repository -> modificar($id_plantacion, $parametros);
     }
 }
