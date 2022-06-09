@@ -58,7 +58,7 @@ class UsuarioRepository {
      * @param  mixed $id_usuario
      * @return void
      */
-    public function borrar(int $id_usuario) {
+    public function borrar(int $id_usuario): void {
         $this -> conexion -> consulta(
             "UPDATE usuario set actual = 0 WHERE id_usuario ='{$id_usuario}';"
         );
@@ -117,7 +117,7 @@ class UsuarioRepository {
      * @param  mixed $rol
      * @return void
      */
-    public function alta(array $campos_validados, string $correo, string $password, int $rol) {
+    public function alta(array $campos_validados, string $correo, string $password, int $rol): void {
         $this -> conexion -> consulta(
             "INSERT INTO usuario(dni, nombre, apellidos, direccion, localidad, telefono, correo, password, rol, actual) VALUES (
                 '{$campos_validados[0]}',
@@ -141,7 +141,7 @@ class UsuarioRepository {
      * @param  mixed $parametros
      * @return void
      */
-    public function modificar(int $id_usuario, array $parametros) {
+    public function modificar(int $id_usuario, array $parametros): void {
         foreach ($parametros as $atributo => $valor) {
             $this -> conexion -> consulta (
                 "UPDATE usuario
