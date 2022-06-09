@@ -11,7 +11,7 @@
             <?php require_once 'views/navlist/item/close.php'?>
         </a>
     <?php elseif ($_SESSION['rol'] == 2): ?>
-        <a href="<?=base_url?>/Plantacion/nueva" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+        <a href="<?=base_url?>/Plantacion/ver_form_alta" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
             <?php require_once 'views/navlist/item/open.php'?>
                 Nueva plantación
             <?php require_once 'views/navlist/item/close.php'?>

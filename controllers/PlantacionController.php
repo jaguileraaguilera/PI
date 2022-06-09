@@ -2,26 +2,50 @@
 namespace controllers;
 use lib\Paginador;
 use services\PlantacionService;
+use models\Plantacion;
 use controllers\UsuarioController;
 use controllers\ErrorController;
 
+/**
+ * PlantacionController
+ */
 class PlantacionController {
   private PlantacionService $service;
-
+  
+  /**
+   * __construct
+   *
+   * @return void
+   */
   function __construct() {
     $this -> service = new PlantacionService();
   }
-
-  public function opciones_plantacion() {
+  
+  /**
+   * opciones_plantacion
+   *
+   * @return void
+   */
+  public function opciones_plantacion(): void {
     require_once 'views/topbar.php';
     require_once 'views/navlist/navlist_plantacion.php';
   }
-
-  public function extraer_todas() {
+  
+  /**
+   * extraer_todas
+   *
+   * @return array
+   */
+  public function extraer_todas(): array {
     return $this -> service -> listar();
   }
-
-  public function listar() {
+  
+  /**
+   * listar
+   *
+   * @return array
+   */
+  public function listar(): array {
     if (isset($_GET['pagina'])){
       $pagina = (int) $_GET['pagina'];
     }
@@ -33,11 +57,22 @@ class PlantacionController {
     require_once 'views/plantacion/ver_todas.php';
     return $array_objetos;
   }
-
-  public function datos_plantacion($id_plantacion) {
+  
+  /**
+   * datos_plantacion
+   *
+   * @param  mixed $id_plantacion
+   * @return Plantacion
+   */
+  public function datos_plantacion($id_plantacion) : Plantacion {
     return $this -> service -> datos_plantacion_id($id_plantacion);
   }
-
+  
+  /**
+   * ver_form_modificar
+   *
+   * @return void
+   */
   public function ver_form_modificar() {
     $usuarioController = new UsuarioController();
     $usuarios = $usuarioController -> extraer_todos();
@@ -45,13 +80,23 @@ class PlantacionController {
     require_once 'views/plantacion/modificar.php';
     return $objeto;
   }
-
-  public function borrar() {
+  
+  /**
+   * borrar
+   *
+   * @return void
+   */
+  public function borrar(): void {
     $this -> service -> borrar($_POST['id_plantacion']);
     header("Location:".base_url."/Plantacion/listar");
   }
-
-  public function mis_plantaciones() {
+  
+  /**
+   * mis_plantaciones
+   *
+   * @return array
+   */
+  public function mis_plantaciones(): array {
     session_start();
     if (isset($_SESSION['correo'])) {
       $pagina = (int) $_GET['pagina'];
@@ -61,8 +106,13 @@ class PlantacionController {
       return $array_objetos;
     }
   }
-
-  public function nueva() {
+    
+  /**
+   * ver_form_alta
+   *
+   * @return void
+   */
+  public function ver_form_alta(): void {
     session_start();
     if (isset($_SESSION['correo'])) {
       $usuarioController = new UsuarioController();
@@ -70,10 +120,14 @@ class PlantacionController {
       $array_objetos = $this -> service -> listar();
       $objeto = $array_objetos[0];
       require_once 'views/plantacion/alta.php';
-      return $objeto;
     }
   }
-
+  
+  /**
+   * modificar
+   *
+   * @return void
+   */
   public function modificar() {
     $id_plantacion = (int) $_POST['id_plantacion'];
 
