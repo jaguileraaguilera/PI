@@ -147,7 +147,7 @@ class UsuarioController {
    * @return void
    */
   public function borrar() : void {
-    $this -> service -> borrar($_POST['id_usuario']);
+    $this -> service -> borrar((int) $_POST['id_usuario']);
     header("Location:".base_url."/Usuario/listar");
   }
   
@@ -236,6 +236,6 @@ class UsuarioController {
    * @return Usuario
    */
   public function get_usuario_from_plantacion(int $id_plantacion): Usuario {
-    return $this -> service -> getUsuarioFromPlantacion($id_plantacion);
+    return $this -> service -> get_usuario_from_plantacion($id_plantacion);
   }
 }

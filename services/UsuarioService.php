@@ -37,14 +37,14 @@ class UsuarioService {
     public function listar(): array {
         return $this -> repository -> listar();
     }
-    
+        
     /**
      * borrar
      *
      * @param  mixed $id_usuario
      * @return void
      */
-    public function borrar(string $id_usuario): void {
+    public function borrar(int $id_usuario): void {
         $this -> repository -> borrar($id_usuario);
     }
         
@@ -77,8 +77,8 @@ class UsuarioService {
      * @param  mixed $rol
      * @return void
      */
-    public function alta(array $campos_validados, string $correo, string $password, int $rol) {
-        return $this -> repository -> alta($campos_validados, $correo, $password, $rol);
+    public function alta(array $campos_validados, string $correo, string $password, int $rol): void {
+        $this -> repository -> alta($campos_validados, $correo, $password, $rol);
     }
     
     /**
@@ -88,8 +88,8 @@ class UsuarioService {
      * @param  mixed $campos_validados
      * @return void
      */
-    public function modificar(int $id_usuario, array $campos_validados) {
-        return $this -> repository -> modificar($id_usuario, $campos_validados);
+    public function modificar(int $id_usuario, array $campos_validados): void {
+        $this -> repository -> modificar($id_usuario, $campos_validados);
     }
     
     /**
@@ -98,7 +98,7 @@ class UsuarioService {
      * @param  mixed $id_plantacion
      * @return Usuario
      */
-    public function getUsuarioFromPlantacion(int $id_plantacion): ?Usuario {
-        return $this -> repository -> getUsuarioFromPlantacion($id_plantacion);
+    public function get_usuario_from_plantacion(int $id_plantacion): ?Usuario {
+        return $this -> repository -> get_usuario_from_plantacion($id_plantacion);
     }
 }

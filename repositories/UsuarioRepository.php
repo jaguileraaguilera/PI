@@ -158,7 +158,7 @@ class UsuarioRepository {
      * @param  mixed $id_plantacion
      * @return Usuario
      */
-    public function getUsuarioFromPlantacion(int $id_plantacion): ?Usuario {
+    public function get_usuario_from_plantacion(int $id_plantacion): ?Usuario {
         $this -> conexion -> consulta(
             "SELECT usuario.* 
             FROM usuario, plantacion 
