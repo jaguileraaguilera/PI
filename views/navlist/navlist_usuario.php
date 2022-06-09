@@ -11,7 +11,7 @@
     </a>
 
     <?php if ($_SESSION['rol'] == 2):?>
-    <a href="<?=base_url?>/Usuario/nuevo" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+    <a href="<?=base_url?>/Usuario/ver_form_alta" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
         <?php require_once 'views/navlist/item/open.php'?>    
             Dar de alta a un nuevo usuario
         <?php require_once 'views/navlist/item/close.php'?>

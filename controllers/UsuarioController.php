@@ -2,6 +2,7 @@
 namespace controllers;
 use services\UsuarioService;
 use lib\Paginador;
+use models\Usuario;
 use controllers\ErrorController;
 
 class UsuarioController {
@@ -11,7 +12,12 @@ class UsuarioController {
     $this -> service = new UsuarioService();
   }
   
-  public function login() {
+  /**
+   * login
+   *
+   * @return void
+   */
+  public function login(): void {
     session_start();
     if (!isset($_SESSION['correo']) || (!isset($_SESSION['password']))) {
       $_SESSION['correo'] = $_POST["correo"];
@@ -43,25 +49,45 @@ class UsuarioController {
       header("Location:".base_url);
     }
   }
-
-  public function logout() {
+  
+  /**
+   * logout
+   *
+   * @return void
+   */
+  public function logout(): void {
     session_start();
     $_SESSION = array();
     session_destroy();
 
     header("Location:".base_url);
   }
-
-  public function opciones_usuario() {
+  
+  /**
+   * opciones_usuario
+   *
+   * @return void
+   */
+  public function opciones_usuario(): void {
     require_once 'views/topbar.php';
     require_once 'views/navlist/navlist_usuario.php';
   }
-
-  public function extraer_todos() {
+  
+  /**
+   * extraer_todos
+   *
+   * @return array
+   */
+  public function extraer_todos(): array {
     return $this -> service -> listar();
   }
-
-  public function listar() {
+  
+  /**
+   * listar
+   *
+   * @return void
+   */
+  public function listar(): void {
     if (isset($_GET['pagina'])){
       $pagina = (int) $_GET['pagina'];
     }
@@ -72,39 +98,60 @@ class UsuarioController {
     $paginador = new Paginador($this -> service -> listar(), 15);
     $array_objetos = $paginador -> particiones;
     require_once 'views/usuario/ver_todos.php';
-    return $array_objetos;
   }
-
-  public function ver_form_modificar() {
+  
+  /**
+   * ver_form_modificar
+   *
+   * @return void
+   */
+  public function ver_form_modificar(): void {
     $objeto = $this -> service -> datos_usuario($_POST['id_usuario']);
     require_once 'views/usuario/modificar.php';
-    return $objeto;
   }
-
-  public function mis_datos() {
+  
+  /**
+   * mis_datos
+   *
+   * @return void
+   */
+  public function mis_datos() : void {
     session_start();
     if (isset($_SESSION['correo'])) {
       $objeto = $this -> service -> datos_usuario_correo($_SESSION['correo']);
       require_once 'views/usuario/mis_datos.php';
-      return $objeto;
     }
   }
-
-  public function nuevo() {
+  
+  /**
+   * ver_form_alta
+   *
+   * @return void
+   */
+  public function ver_form_alta() : void {
     session_start();
     if (isset($_SESSION['correo'])) {
       $objeto = $this -> service -> datos_usuario_correo($_SESSION['correo']);
       require_once 'views/usuario/alta.php';
-      return $objeto;
     }
   }
-
-  public function borrar() {
+  
+  /**
+   * borrar
+   *
+   * @return void
+   */
+  public function borrar() : void {
     $this -> service -> borrar($_POST['id_usuario']);
     header("Location:".base_url."/Usuario/listar");
   }
-
-  public function alta() {
+  
+  /**
+   * alta
+   *
+   * @return void
+   */
+  public function alta(): void {
     $campos_string = array('dni','nombre', 'apellidos', 'direccion', 'localidad', 'telefono');
     $campos_validados = array();
 
@@ -129,8 +176,13 @@ class UsuarioController {
       header("Location:".base_url."/Usuario/listar");
     }
   }
-
-  public function modificar() {
+  
+  /**
+   * modificar
+   *
+   * @return void
+   */
+  public function modificar(): void {
     session_start();
     $id_usuario = $_POST['id_usuario'];
 
@@ -154,7 +206,6 @@ class UsuarioController {
       else {
         $password_igual = true;
       }
-      
     }
 
     if ((count($campos_validados)  == count($campos_string)) && isset($correo)) {
@@ -172,8 +223,14 @@ class UsuarioController {
       }
     }
   }
-
-  public function getUsuarioFromPlantacion($id_plantacion) {
+    
+  /**
+   * get_usuario_from_plantacion
+   *
+   * @param  mixed $id_plantacion
+   * @return Usuario
+   */
+  public function get_usuario_from_plantacion(int $id_plantacion): Usuario {
     return $this -> service -> getUsuarioFromPlantacion($id_plantacion);
   }
 }
