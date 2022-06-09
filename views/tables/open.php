@@ -9,7 +9,7 @@
             <?php else: ?>
                 <?php require_once 'views/tables/formatear_cabeceras_objeto.php'; ?>
             <?php endif; ?>
-            <?php if ($_GET['action'] != 'mis_entregas'): ?>
+            <?php if ($_GET['action'] != 'mis_entregas' && $_GET['action'] != 'mis_plantaciones'): ?>
                 <th scope="row">Modificar</th>
                 <?php if($_GET['action'] != 'mis_datos'): ?>
                     <th scope="row">Borrar</th>
