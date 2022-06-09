@@ -10,11 +10,7 @@ class UsuarioController {
   function __construct() {
     $this -> service = new UsuarioService();
   }
-
-  public function iniciar_sesion() {
-    require_once 'views/usuario/iniciar_sesion.php';
-  }
-
+  
   public function login() {
     session_start();
     if (!isset($_SESSION['correo']) || (!isset($_SESSION['password']))) {
