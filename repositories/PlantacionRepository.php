@@ -33,7 +33,7 @@ class PlantacionRepository {
      *
      * @return array
      */
-    public function listar() : array {
+    public function listar(): array {
         $this -> conexion -> consulta("SELECT * FROM plantacion;");
         return $this -> extraer_todos();
     }
@@ -44,7 +44,7 @@ class PlantacionRepository {
      * @param  mixed $id_plantacion
      * @return void
      */
-    public function borrar(int $id_plantacion) {
+    public function borrar(int $id_plantacion): void {
         $this -> conexion -> consulta(
             "UPDATE plantacion set actual = 0 WHERE id_plantacion ='{$id_plantacion}';"
         );
@@ -56,7 +56,7 @@ class PlantacionRepository {
      * @param  mixed $correo
      * @return array
      */
-    public function datos_plantaciones(string $correo): ?array {
+    public function datos_plantaciones(string $correo): array {
         $this -> conexion -> consulta(
             "SELECT plantacion.* 
             FROM plantacion, usuario 
@@ -86,7 +86,7 @@ class PlantacionRepository {
      * @param  mixed $parametros
      * @return void
      */
-    public function modificar(int $id_plantacion, array $parametros) {
+    public function modificar(int $id_plantacion, array $parametros): void {
         foreach ($parametros as $atributo => $valor) {
             $this -> conexion -> consulta (
                 "UPDATE plantacion 
@@ -106,7 +106,7 @@ class PlantacionRepository {
      * @param  mixed $id_usuario
      * @return void
      */
-    public function alta(string $variedad, int $anio, int $zona, int $id_usuario) {
+    public function alta(string $variedad, int $anio, int $zona, int $id_usuario): void {
         $this -> conexion -> consulta(
             "INSERT INTO plantacion(variedad, anio, zona, id_usuario, actual) VALUES(
                 '{$variedad}',
