@@ -11,7 +11,9 @@
             <?php endif; ?>
             <?php if ($_GET['action'] != 'mis_entregas'): ?>
                 <th scope="row">Modificar</th>
-                <th scope="row">Borrar</th>
+                <?php if($_GET['action'] != 'mis_datos'): ?>
+                    <th scope="row">Borrar</th>
+                <?php endif; ?>
             <?php endif; ?>
         </tr>
     </thead>

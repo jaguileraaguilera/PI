@@ -15,11 +15,11 @@
                 <?php require_once 'views/btn/modificar.php'; ?>
             </form>
         </td>
-        <td>
+        <!-- <td>
             <form action="<?=htmlspecialchars(base_url."/Usuario/borrar")?>" method="POST">
                 <?php require_once 'views/input/id_usuario.php'; ?>
                 <?php require_once 'views/btn/borrar_disabled.php'; ?>
             </form>
-        </td>
+        </td> -->
     </tr>
 <?php require_once 'views/tables/close.php'; ?>
