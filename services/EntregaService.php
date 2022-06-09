@@ -79,8 +79,8 @@ class EntregaService {
      * @param  mixed $parametros
      * @return void
      */
-    public function modificar(int $id_entrega, array $parametros) {
-        return $this-> repository -> modificar($id_entrega, $parametros);
+    public function modificar(int $id_entrega, array $parametros) : void {
+        $this-> repository -> modificar($id_entrega, $parametros);
     }
     
     /**
