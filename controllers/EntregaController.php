@@ -77,7 +77,7 @@ class EntregaController {
    *
    * @return void
    */
-  public function nueva() {
+  public function ver_form_alta() {
     session_start();
     if (isset($_SESSION['correo'])) {
       $plantacionController = new PlantacionController();

@@ -188,6 +188,6 @@ class Entrega {
      * @return Entrega
      */
     public static function fromArray(array $data): Entrega {
-        return new Entrega (...$data);
+        return new Entrega(...$data);
     }
 }

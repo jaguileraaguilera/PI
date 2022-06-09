@@ -146,6 +146,6 @@ class Plantacion {
          * @return Plantacion
          */
         public static function fromArray(array $data) :Plantacion {
-                return new Plantacion (...$data);
+                return new Plantacion(...$data);
         }
 }

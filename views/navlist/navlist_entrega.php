@@ -11,7 +11,7 @@
             <?php require_once 'views/navlist/item/close.php'?>
         </a>
     <?php else: ?>
-        <a href="<?=base_url?>/Entrega/nueva" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+        <a href="<?=base_url?>/Entrega/ver_form_alta" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
             <?php require_once 'views/navlist/item/open.php'?>
                 Nueva entrega
             <?php require_once 'views/navlist/item/close.php'?>

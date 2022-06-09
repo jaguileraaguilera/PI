@@ -252,6 +252,6 @@ class Usuario {
          * @return Usuario
          */
         public static function fromArray(array $data) :Usuario {
-                return new Usuario (...$data);
+                return new Usuario(...$data);
         }        
 }
