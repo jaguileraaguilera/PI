@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-lg" style="background-color: rgba(158, 185, 69, 0.8);">
     <div class="container-fluid">
         <a class="navbar-brand" href="<?=base_url?>/Usuario/login">
-            <img src="<?=base_url?>/assets/img/logotipo.png" width="100" height="70" alt="">
+            <img src="<?=base_url?>/assets/img/logotipo.png" width="100" height="70" alt="logotipo de COSAFRA">
         </a>
         <?php comprobar_sesion() ?>
         <span class="navbar-text">

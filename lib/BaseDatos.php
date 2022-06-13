@@ -62,7 +62,6 @@ class BaseDatos {
    */
   public function extraer_registro(): mixed {
     return ($fila = $this->resultado->fetch(PDO::FETCH_ASSOC )) ? $fila:false;
-    
   }
   
   /**
