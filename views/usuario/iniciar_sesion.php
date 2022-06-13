@@ -1,7 +1,7 @@
 <main class="form text-center">
     <div class="form-signin w-100 m-auto">
         <form action="<?=htmlspecialchars(base_url."/Usuario/login")?>" method="POST" class="needs-validation">
-            <img class="mb-4" src="<?=base_url?>/assets/img/logotipo.png" alt="" width="180" height="126">
+            <img class="mb-4" src="<?=base_url?>/assets/img/logotipo.png" alt="logotipo de COSAFRA" width="180" height="126">
             <h1 class="h2 mb-3 fw-normal">Página de acceso</h1>
 
             <div class="form-floating">

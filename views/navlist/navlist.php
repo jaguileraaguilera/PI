@@ -24,5 +24,4 @@
   </a>
 
   <?php endif; ?>
-</div>
-         
+</div>      

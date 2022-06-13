@@ -1,4 +1,4 @@
-<?php require_once 'helpers.php' ?>
+<?php require_once 'helpers.php';?>
 
 <nav class="navbar navbar-expand-lg" style="background-color: rgba(158, 185, 69, 0.8);">
     <div class="container-fluid">
