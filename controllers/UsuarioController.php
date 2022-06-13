@@ -44,7 +44,7 @@ class UsuarioController {
     }
 
     $objeto = $this -> service -> login($_SESSION['correo'], $_SESSION['password_cifrada']);
-    if ($objeto) {
+    if ($objeto -> getActual() == 1) {
       $_SESSION['rol'] = $objeto -> getRol();
       $_SESSION['nombre'] = $objeto -> getNombre();
       require_once 'views/topbar.php';
@@ -160,6 +160,8 @@ class UsuarioController {
     $campos_string = array('dni','nombre', 'apellidos', 'direccion', 'localidad', 'telefono');
     $campos_validados = array();
 
+    $usuarios = $this -> service -> listar();
+
     foreach ($campos_string as $campo) {
       if (isset($_POST[$campo]) && !empty($_POST[$campo])) {
         array_push($campos_validados, filter_var( $_POST[$campo], FILTER_SANITIZE_SPECIAL_CHARS));
@@ -176,9 +178,18 @@ class UsuarioController {
 
     $rol = $_POST['rol'];
 
-    if ( (count($campos_validados)  == count($campos_string)) && isset($correo) && isset($password) && isset($rol)) {
+    foreach ($usuarios as $usuario) {
+      if ($usuario -> getCorreo() == $correo) {
+        $correo_existente = true;
+      }
+    }
+
+    if ((count($campos_validados)  == count($campos_string)) && isset($correo) && isset($password) && isset($rol) && !isset($correo_existente)) {
       $this -> service -> alta($campos_validados, $correo, $password, $rol);
       header("Location:".base_url."/Usuario/listar");
+    }
+    else {
+      header("Location:".base_url."/Usuario/ver_form_alta");
     }
   }
   
